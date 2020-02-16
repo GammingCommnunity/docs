@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 08, 2020 at 04:10 PM
+-- Generation Time: Feb 16, 2020 at 11:20 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.14
 
@@ -34,8 +34,8 @@ CREATE TABLE `account` (
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `describe` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `password` char(60) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `account_role_id` tinyint(4) NOT NULL DEFAULT 1,
-  `account_status_id` tinyint(4) NOT NULL DEFAULT 1,
+  `role` tinyint(4) NOT NULL DEFAULT 1,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
   `account_info_birth_year_id` bigint(20) UNSIGNED DEFAULT NULL,
   `account_info_birth_month_id` bigint(20) UNSIGNED DEFAULT NULL,
   `account_info_email_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `account` (
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`id`, `login_name`, `name`, `describe`, `password`, `account_role_id`, `account_status_id`, `account_info_birth_year_id`, `account_info_birth_month_id`, `account_info_email_id`, `account_info_phone_id`, `account_setting_id`, `updated_at`, `created_at`) VALUES
+INSERT INTO `account` (`id`, `login_name`, `name`, `describe`, `password`, `role`, `status`, `account_info_birth_year_id`, `account_info_birth_month_id`, `account_info_email_id`, `account_info_phone_id`, `account_setting_id`, `updated_at`, `created_at`) VALUES
 (1, 'hoang', 'Đây là tên của HOANG', 'main', '$2y$12$clQLwWx.sBWDpstLFaWtZeqo4Ei5wPUfqBzILWf7lteJ8a5xYcMNu', 2, 1, 1, 1, 1, 1, 1, '2020-02-08 08:30:17', '2019-11-27 08:56:01'),
 (2, 'giang', 'aa', 'stranger private', '$2y$12$clQLwWx.sBWDpstLFaWtZeqo4Ei5wPUfqBzILWf7lteJ8a5xYcMNu', 1, 1, 2, 2, 2, 2, 1, '2020-01-28 07:12:18', '2019-11-27 08:56:01'),
 (3, 'tri', 'Huỳnh Bá Cao Trí', 'friend private', '$2y$12$clQLwWx.sBWDpstLFaWtZeqo4Ei5wPUfqBzILWf7lteJ8a5xYcMNu', 2, 1, 3, 3, 3, 3, 1, '2020-01-28 07:12:18', '2019-11-27 08:56:01'),
@@ -87,14 +87,14 @@ INSERT INTO `account` (`id`, `login_name`, `name`, `describe`, `password`, `acco
 CREATE TABLE `account_info_birth_month` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `month` varchar(5) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `account_privacy_type_id` tinyint(4) NOT NULL DEFAULT 1
+  `privacy_type` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `account_info_birth_month`
 --
 
-INSERT INTO `account_info_birth_month` (`id`, `month`, `account_privacy_type_id`) VALUES
+INSERT INTO `account_info_birth_month` (`id`, `month`, `privacy_type`) VALUES
 (1, '11/07', 2),
 (2, '11/11', -1),
 (3, '11/11', -1),
@@ -110,14 +110,14 @@ INSERT INTO `account_info_birth_month` (`id`, `month`, `account_privacy_type_id`
 CREATE TABLE `account_info_birth_year` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `year` varchar(4) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `account_privacy_type_id` tinyint(4) NOT NULL DEFAULT 1
+  `privacy_type` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `account_info_birth_year`
 --
 
-INSERT INTO `account_info_birth_year` (`id`, `year`, `account_privacy_type_id`) VALUES
+INSERT INTO `account_info_birth_year` (`id`, `year`, `privacy_type`) VALUES
 (1, '2020', -1),
 (2, '1998', -1),
 (3, '1998', -1),
@@ -133,14 +133,14 @@ INSERT INTO `account_info_birth_year` (`id`, `year`, `account_privacy_type_id`) 
 CREATE TABLE `account_info_email` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(100) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `account_privacy_type_id` tinyint(4) NOT NULL DEFAULT 1
+  `privacy_type` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `account_info_email`
 --
 
-INSERT INTO `account_info_email` (`id`, `email`, `account_privacy_type_id`) VALUES
+INSERT INTO `account_info_email` (`id`, `email`, `privacy_type`) VALUES
 (1, 'yahooyahoo@yahoo.com.vn', 2),
 (2, 'gmail@yahoo.com.vn', -1),
 (3, 'gmail@yahoo.com.vn', -1),
@@ -156,54 +156,19 @@ INSERT INTO `account_info_email` (`id`, `email`, `account_privacy_type_id`) VALU
 CREATE TABLE `account_info_phone` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `phone` varchar(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `account_privacy_type_id` tinyint(4) NOT NULL DEFAULT 1
+  `privacy_type` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `account_info_phone`
 --
 
-INSERT INTO `account_info_phone` (`id`, `phone`, `account_privacy_type_id`) VALUES
+INSERT INTO `account_info_phone` (`id`, `phone`, `privacy_type`) VALUES
 (1, '+123456789', 1),
 (2, '+84972896051', -1),
 (3, '+84972896051', -1),
 (4, '+84972896051', 2),
 (5, '+84972896051', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `account_oauth`
---
-
-CREATE TABLE `account_oauth` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `oauth_id` varchar(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `account_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `oauth_provider_id` tinyint(4) UNSIGNED NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `account_privacy_type`
---
-
-CREATE TABLE `account_privacy_type` (
-  `id` tinyint(4) NOT NULL,
-  `describe` varchar(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `account_privacy_type`
---
-
-INSERT INTO `account_privacy_type` (`id`, `describe`) VALUES
-(-1, 'private'),
-(1, 'public'),
-(2, 'friend');
 
 -- --------------------------------------------------------
 
@@ -215,7 +180,7 @@ CREATE TABLE `account_relationship` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `sender_account_id` bigint(20) UNSIGNED NOT NULL,
   `receiver_account_id` bigint(20) UNSIGNED NOT NULL,
-  `account_relationship_type_id` tinyint(4) NOT NULL DEFAULT 1,
+  `relationship_type` tinyint(4) NOT NULL DEFAULT 1,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -224,50 +189,10 @@ CREATE TABLE `account_relationship` (
 -- Dumping data for table `account_relationship`
 --
 
-INSERT INTO `account_relationship` (`id`, `sender_account_id`, `receiver_account_id`, `account_relationship_type_id`, `updated_at`, `created_at`) VALUES
+INSERT INTO `account_relationship` (`id`, `sender_account_id`, `receiver_account_id`, `relationship_type`, `updated_at`, `created_at`) VALUES
 (1, 1, 3, 1, '2020-01-30 15:58:22', '2020-01-30 15:58:22'),
 (2, 1, 7, -1, '2020-01-30 15:58:22', '2020-01-30 15:58:22'),
 (3, 1, 6, 1, '2020-01-30 15:58:22', '2020-01-30 15:58:22');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `account_relationship_type`
---
-
-CREATE TABLE `account_relationship_type` (
-  `id` tinyint(4) NOT NULL,
-  `describe` varchar(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `account_relationship_type`
---
-
-INSERT INTO `account_relationship_type` (`id`, `describe`) VALUES
-(-1, 'blocked'),
-(1, 'friend'),
-(2, 'friend_request');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `account_role`
---
-
-CREATE TABLE `account_role` (
-  `id` tinyint(4) NOT NULL,
-  `describe` varchar(10) CHARACTER SET ascii COLLATE ascii_bin DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `account_role`
---
-
-INSERT INTO `account_role` (`id`, `describe`) VALUES
-(1, 'user'),
-(2, 'admin'),
-(3, 'master');
 
 -- --------------------------------------------------------
 
@@ -308,94 +233,6 @@ INSERT INTO `account_setting` (`id`, `anonymous`) VALUES
 (21, 0),
 (22, 0);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `account_status`
---
-
-CREATE TABLE `account_status` (
-  `id` tinyint(4) NOT NULL,
-  `describe` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `account_status`
---
-
-INSERT INTO `account_status` (`id`, `describe`) VALUES
-(-1, 'banned'),
-(0, 'unactivated'),
-(1, 'activated');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `feedback`
---
-
-CREATE TABLE `feedback` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `content` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `account_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `feedback`
---
-
-INSERT INTO `feedback` (`id`, `content`, `account_id`, `updated_at`, `created_at`) VALUES
-(1, 'thao ngu', 1, '2020-01-28 07:09:12', '2019-12-17 16:35:18'),
-(2, 'thao ngu', NULL, '2020-01-28 07:09:12', '2019-12-17 16:35:38');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `game_channel`
---
-
-CREATE TABLE `game_channel` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `account_id` bigint(20) UNSIGNED NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `game_channel`
---
-
-INSERT INTO `game_channel` (`id`, `name`, `account_id`, `updated_at`, `created_at`) VALUES
-(1, 'game image', 1, '2020-01-28 07:02:51', '2019-12-16 10:41:07'),
-(2, 'game image2', 1, '2020-01-28 07:02:51', '2019-12-16 10:42:42'),
-(3, '1998', 1, '2020-01-28 07:02:51', '2019-12-16 10:48:24');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `oauth_provider`
---
-
-CREATE TABLE `oauth_provider` (
-  `id` tinyint(4) UNSIGNED NOT NULL,
-  `name` varchar(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `oauth_provider`
---
-
-INSERT INTO `oauth_provider` (`id`, `name`) VALUES
-(1, 'facebook'),
-(2, 'google'),
-(3, 'zalo'),
-(4, 'twitter'),
-(5, 'blizzard'),
-(6, 'steam');
-
 --
 -- Indexes for dumped tables
 --
@@ -405,107 +242,55 @@ INSERT INTO `oauth_provider` (`id`, `name`) VALUES
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_position` (`account_role_id`),
+  ADD KEY `id_position` (`role`),
   ADD KEY `account_info_birth_year_id` (`account_info_birth_year_id`),
   ADD KEY `account_info_birth_month_id` (`account_info_birth_month_id`),
   ADD KEY `account_info_email_id` (`account_info_email_id`),
   ADD KEY `account_info_phone_id` (`account_info_phone_id`),
   ADD KEY `account_setting_id` (`account_setting_id`),
-  ADD KEY `account_ibfk_7` (`account_status_id`);
+  ADD KEY `account_ibfk_7` (`status`);
 
 --
 -- Indexes for table `account_info_birth_month`
 --
 ALTER TABLE `account_info_birth_month`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `account_privacy_type_id` (`account_privacy_type_id`);
+  ADD KEY `account_privacy_type_id` (`privacy_type`);
 
 --
 -- Indexes for table `account_info_birth_year`
 --
 ALTER TABLE `account_info_birth_year`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `account_privacy_type_id` (`account_privacy_type_id`);
+  ADD KEY `account_privacy_type_id` (`privacy_type`);
 
 --
 -- Indexes for table `account_info_email`
 --
 ALTER TABLE `account_info_email`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `account_privacy_type_id` (`account_privacy_type_id`);
+  ADD KEY `account_privacy_type_id` (`privacy_type`);
 
 --
 -- Indexes for table `account_info_phone`
 --
 ALTER TABLE `account_info_phone`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `account_privacy_type_id` (`account_privacy_type_id`);
-
---
--- Indexes for table `account_oauth`
---
-ALTER TABLE `account_oauth`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `oauth_provider_id` (`oauth_provider_id`),
-  ADD KEY `account_id` (`account_id`);
-
---
--- Indexes for table `account_privacy_type`
---
-ALTER TABLE `account_privacy_type`
-  ADD PRIMARY KEY (`id`);
+  ADD KEY `account_privacy_type_id` (`privacy_type`);
 
 --
 -- Indexes for table `account_relationship`
 --
 ALTER TABLE `account_relationship`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `account_relationship_type_id` (`account_relationship_type_id`),
+  ADD KEY `account_relationship_type_id` (`relationship_type`),
   ADD KEY `sender_account_id` (`sender_account_id`),
   ADD KEY `receiver_account_id` (`receiver_account_id`);
-
---
--- Indexes for table `account_relationship_type`
---
-ALTER TABLE `account_relationship_type`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `account_role`
---
-ALTER TABLE `account_role`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `account_setting`
 --
 ALTER TABLE `account_setting`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `account_status`
---
-ALTER TABLE `account_status`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_account` (`account_id`);
-
---
--- Indexes for table `game_channel`
---
-ALTER TABLE `game_channel`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `jhfgdf` (`account_id`);
-
---
--- Indexes for table `oauth_provider`
---
-ALTER TABLE `oauth_provider`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -543,12 +328,6 @@ ALTER TABLE `account_info_phone`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `account_oauth`
---
-ALTER TABLE `account_oauth`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `account_relationship`
 --
 ALTER TABLE `account_relationship`
@@ -561,24 +340,6 @@ ALTER TABLE `account_setting`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `feedback`
---
-ALTER TABLE `feedback`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `game_channel`
---
-ALTER TABLE `game_channel`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `oauth_provider`
---
-ALTER TABLE `oauth_provider`
-  MODIFY `id` tinyint(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- Constraints for dumped tables
 --
 
@@ -586,64 +347,18 @@ ALTER TABLE `oauth_provider`
 -- Constraints for table `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`account_role_id`) REFERENCES `account_role` (`id`),
   ADD CONSTRAINT `account_ibfk_2` FOREIGN KEY (`account_info_birth_year_id`) REFERENCES `account_info_birth_year` (`id`),
   ADD CONSTRAINT `account_ibfk_3` FOREIGN KEY (`account_info_birth_month_id`) REFERENCES `account_info_birth_month` (`id`),
   ADD CONSTRAINT `account_ibfk_4` FOREIGN KEY (`account_info_email_id`) REFERENCES `account_info_email` (`id`),
   ADD CONSTRAINT `account_ibfk_5` FOREIGN KEY (`account_info_phone_id`) REFERENCES `account_info_phone` (`id`),
-  ADD CONSTRAINT `account_ibfk_6` FOREIGN KEY (`account_setting_id`) REFERENCES `account_setting` (`id`),
-  ADD CONSTRAINT `account_ibfk_7` FOREIGN KEY (`account_status_id`) REFERENCES `account_status` (`id`);
-
---
--- Constraints for table `account_info_birth_month`
---
-ALTER TABLE `account_info_birth_month`
-  ADD CONSTRAINT `account_info_birth_month_ibfk_1` FOREIGN KEY (`account_privacy_type_id`) REFERENCES `account_privacy_type` (`id`);
-
---
--- Constraints for table `account_info_birth_year`
---
-ALTER TABLE `account_info_birth_year`
-  ADD CONSTRAINT `account_info_birth_year_ibfk_1` FOREIGN KEY (`account_privacy_type_id`) REFERENCES `account_privacy_type` (`id`);
-
---
--- Constraints for table `account_info_email`
---
-ALTER TABLE `account_info_email`
-  ADD CONSTRAINT `account_info_email_ibfk_2` FOREIGN KEY (`account_privacy_type_id`) REFERENCES `account_privacy_type` (`id`);
-
---
--- Constraints for table `account_info_phone`
---
-ALTER TABLE `account_info_phone`
-  ADD CONSTRAINT `account_info_phone_ibfk_2` FOREIGN KEY (`account_privacy_type_id`) REFERENCES `account_privacy_type` (`id`);
-
---
--- Constraints for table `account_oauth`
---
-ALTER TABLE `account_oauth`
-  ADD CONSTRAINT `account_oauth_ibfk_1` FOREIGN KEY (`oauth_provider_id`) REFERENCES `oauth_provider` (`id`),
-  ADD CONSTRAINT `account_oauth_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`);
+  ADD CONSTRAINT `account_ibfk_6` FOREIGN KEY (`account_setting_id`) REFERENCES `account_setting` (`id`);
 
 --
 -- Constraints for table `account_relationship`
 --
 ALTER TABLE `account_relationship`
-  ADD CONSTRAINT `account_relationship_ibfk_1` FOREIGN KEY (`account_relationship_type_id`) REFERENCES `account_relationship_type` (`id`),
   ADD CONSTRAINT `account_relationship_ibfk_2` FOREIGN KEY (`sender_account_id`) REFERENCES `account` (`id`),
   ADD CONSTRAINT `account_relationship_ibfk_3` FOREIGN KEY (`receiver_account_id`) REFERENCES `account` (`id`);
-
---
--- Constraints for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`);
-
---
--- Constraints for table `game_channel`
---
-ALTER TABLE `game_channel`
-  ADD CONSTRAINT `jhfgdf` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
