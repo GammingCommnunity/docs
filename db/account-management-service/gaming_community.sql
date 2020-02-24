@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 16, 2020 at 11:20 AM
+-- Generation Time: Feb 21, 2020 at 02:48 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.14
 
@@ -50,19 +50,19 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `login_name`, `name`, `describe`, `password`, `role`, `status`, `account_info_birth_year_id`, `account_info_birth_month_id`, `account_info_email_id`, `account_info_phone_id`, `account_setting_id`, `updated_at`, `created_at`) VALUES
-(1, 'hoang', 'Đây là tên của HOANG', 'main', '$2y$12$clQLwWx.sBWDpstLFaWtZeqo4Ei5wPUfqBzILWf7lteJ8a5xYcMNu', 2, 1, 1, 1, 1, 1, 1, '2020-02-08 08:30:17', '2019-11-27 08:56:01'),
-(2, 'giang', 'aa', 'stranger private', '$2y$12$clQLwWx.sBWDpstLFaWtZeqo4Ei5wPUfqBzILWf7lteJ8a5xYcMNu', 1, 1, 2, 2, 2, 2, 1, '2020-01-28 07:12:18', '2019-11-27 08:56:01'),
-(3, 'tri', 'Huỳnh Bá Cao Trí', 'friend private', '$2y$12$clQLwWx.sBWDpstLFaWtZeqo4Ei5wPUfqBzILWf7lteJ8a5xYcMNu', 2, 1, 3, 3, 3, 3, 1, '2020-01-28 07:12:18', '2019-11-27 08:56:01'),
-(6, 'newe', 'Tôi là người mới', 'friend friend', '$2y$12$kCwJjcalpCY4i1eWl7bSJOVeS4pfn8cBBheLIzwZmu4gewcU7Ob6e', 1, 1, 4, 4, 4, 4, 1, '2020-01-28 07:12:18', '2019-12-16 08:48:26'),
-(7, 'awdnewe', 'Tôi là người mới', 'blocked', '$2y$12$NBnw29xUtHASqlYbjsONSuennNa0n7XyVYdHCkK.3AAaBuO5WeoMi', 1, 1, 5, 5, 5, 5, 1, '2020-01-28 07:12:18', '2019-12-16 08:50:05'),
-(8, 'awdndewe', 'Tôi là người mới', '', '$2y$12$M1582w2mqO9VON7TlsRBVu8XkJIzjrlqNGn0auraBlEyHjtYiQyma', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 08:50:08'),
-(9, 'a', 'Tôi là người mới', '', '$2y$12$a/yf53nQfHUtIY9WOqCbiOPxV2mOYn/sPcdHUNHkdPCezgds3tRfW', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 08:50:11'),
-(10, 'c', 'Tôi là người mới', '', '$2y$12$LeoZyAKxGG9J5Yz0K5T3CeQEZSahhe9T042elmUkDaZOXBS0d0tHK', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 08:50:14'),
-(11, 'img', 'Tôi là người mới', '', '$2y$12$KNKuYTXjjlUoRiZxQEK7I.GEHcqHy3z0S64HT2pOLR/ISHwhe61Xa', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 10:48:57'),
-(12, 'imga', 'Tôi là người mới', '', '$2y$12$VbP0eivirZnGILG86cPArOrdi2BbZ3PXQmj/kvdQocZWPtfXt49Bu', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 10:56:46'),
-(13, 'imaga', 'Tôi là người mới', '', '$2y$12$sCAWBawep3Mo0UvBNagUqus7bnKCZgssKxJleJ8YU.LC.s/pl424a', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 10:57:34'),
-(14, 'imaaga', 'Tôi là người mới', '', '$2y$12$usV/TNoGiNGYFcLQcxDlfeuONvw2fmV1QuVnmsfjTbrmxGad2C.w.', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 10:57:43'),
-(23, 'newae', 'Tôi là người mới', '', '$2y$12$NcGFWv7wUcLf8FVyZJ6w1u5QYpVKS.lgnLV5wcxvXX3qGEnnzsO8G', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-19 08:53:36'),
+(1, 'hoang', 'Đây là tên của HOANG', 'main', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 2, 1, 1, 1, 1, 1, 1, '2020-02-08 08:30:17', '2019-11-27 08:56:01'),
+(2, 'giang', 'aa', 'stranger private', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, 2, 2, 2, 2, 1, '2020-01-28 07:12:18', '2019-11-27 08:56:01'),
+(3, 'tri', 'Huỳnh Bá Cao Trí', 'friend private', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 2, 1, 3, 3, 3, 3, 1, '2020-01-28 07:12:18', '2019-11-27 08:56:01'),
+(6, 'newe', 'Tôi là người mới', 'friend friend', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, 4, 4, 4, 4, 1, '2020-01-28 07:12:18', '2019-12-16 08:48:26'),
+(7, 'awdnewe', 'Tôi là người mới', 'blocked', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, 5, 5, 5, 5, 1, '2020-01-28 07:12:18', '2019-12-16 08:50:05'),
+(8, 'awdndewe', 'Tôi là người mới', '', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 08:50:08'),
+(9, 'a', 'Tôi là người mới', '', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 08:50:11'),
+(10, 'c', 'Tôi là người mới', '', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 08:50:14'),
+(11, 'img', 'Tôi là người mới', '', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 10:48:57'),
+(12, 'imga', 'Tôi là người mới', '', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 10:56:46'),
+(13, 'imaga', 'Tôi là người mới', '', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 10:57:34'),
+(14, 'imaaga', 'Tôi là người mới', '', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-16 10:57:43'),
+(23, 'newae', 'Tôi là người mới', '', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-01-28 07:12:18', '2019-12-19 08:53:36'),
 (24, 'hoang1', 'Hoàng', '', '$2y$10$Ewfurx8DBDs8lvezGyYWGuuW8A415BzA8QRj4g3MLw5LkoT8LFjYS', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-02-07 09:39:26', '2020-02-07 09:39:26'),
 (25, 'hoang12', 'Hoàng', '', '$2y$10$ZBN7n0o5dmlYkxhNWwqRJe7/XAO/WKVegnFpK1B4JvdHj3wmkp.1e', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-02-07 09:48:12', '2020-02-07 09:48:12'),
 (26, 'hoang112', 'Hoàng', '', '$2y$10$HGNF11C48w3a2qTxRYBOIu3jGxAp9QF/1MvADFqaLb.uVnJOex3pO', 1, 1, NULL, NULL, NULL, NULL, 1, '2020-02-07 10:18:08', '2020-02-07 10:18:08'),
