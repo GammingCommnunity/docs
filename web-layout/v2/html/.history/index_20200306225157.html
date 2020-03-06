@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- title -->
+	<title>Gaming Community</title>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+	<!-- fontawesome -->
+	<link href="fontawesome-free-5.12.1-web/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- bootstrap -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap/bootstrap.popper.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<!-- sweetalert -->
+	<script src="js/sweetalert2.js"></script>
+	<!-- root -->
+	<style>
+		:root {
+			/* background color */
+			--bg9: #263238;
+			--bg8: #37474F;
+			--bg7: #455A64;
+			--bg6: #546E7A;
+			--bg5: #607D8B;
+			--bg4: #78909C;
+			--bg3: #90A4AE;
+			--bg2: #B0BEC5;
+			--bg1: #CFD8DC;
+			/* text color */
+			--primary-text: white;
+			--secondary-text: #C8C8C8;
+			/* shadow */
+			--shd: 3px 5px 9px rgba(0, 0, 0, .2);
+			--shd-inset: inset 1px 3px 9px black;
+			--shd-lg: 3px 5px 18px rgba(0, 0, 0, .4);
+			--shd-highlight: 3px 5px 9px rgba(0, 0, 0, .2), inset 1px 3px 9px black;
+			/* text size */
+			--text-size-sm: 12px;
+			--text-size-lg: 17px;
+			/* highlight */
+			--highlight: rgb(102, 243, 212);
+			--border-highlight: 4px solid var(--highlight);
+		}
+	</style>
+
+	<!-- global style -->
+	<style>
+		html {
+			margin: 0;
+			padding: 0;
+		}
+
+		html * {
+			font-size: 15px;
+			color: var(--primary-text);
+		}
+
+		::-webkit-scrollbar {
+			width: 8px;
+			background-color: var(--bg8);
+			border-radius: 8px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: var(--bg6);
+			border-radius: 8px;
+		}
+
+		pre {
+			white-space: pre-line;
+			word-break: break-word;
+		}
+
+		textarea::placeholder,
+		input::placeholder {
+			color: var(--secondary-text);
+		}
+
+
+
+
+
+
+		.img {
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.nowrap {
+			white-space: nowrap;
+		}
+
+		.wrap {
+			white-space: pre-line;
+			word-break: break-word;
+		}
+
+		.logo {
+			width: 40px;
+			height: 40px;
+		}
+
+		/* component */
+		.component {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.component-head {
+			display: flex;
+			align-items: center;
+			margin-bottom: 22px;
+		}
+
+		.component-head * {
+			color: var(--secondary-text);
+		}
+
+		.component-head label {
+			margin-right: 10px;
+			font-weight: bold;
+			font-size: var(--text-size-lg);
+			flex-grow: 1;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		.component .component-body {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			overflow: auto;
+		}
+
+		/* background hover */
+		.bg-hover {
+			transition: all .3s ease;
+		}
+
+		.bg-hover:hover {
+			background-color: var(--bg8);
+		}
+
+		/* padding hover */
+		.padding-hover {
+			transition: all .4s ease;
+		}
+
+		.padding-hover:hover {
+			padding: 10px;
+			background-color: var(--bg8);
+		}
+
+		/* highlight hover */
+		.highlight-hover {
+			transition: all .2s ease;
+		}
+
+		.highlight-hover:hover {
+			border: 4px solid var(--highlight);
+			box-shadow: var(--shd-highlight);
+		}
+
+		/* fix bootstrap */
+		p,
+		pre,
+		label {
+			margin: 0;
+		}
+
+		.dropdown-menu {
+			font-weight: bold;
+			background-color: var(--bg6);
+			box-shadow: var(--shd-lg);
+		}
+
+		.dropdown-menu * {
+			font-weight: bold;
+			transition: all .3s ease;
+			color: var(--primary-text);
+		}
+
+		.dropdown-menu .dropdown-item:hover {
+			color: var(--bg6);
+			border-left: 4px solid var(--highlight);
+		}
+	</style>
+
+	<!-- framework -->
+	<style>
+		body {
+			position: relative;
+			background-color: var(--bg9);
+			padding-top: 100px;
+		}
+
+		header {
+			width: 100vw;
+			height: 60px;
+			padding-left: 10px;
+			padding-right: 10px;
+			position: fixed;
+			z-index: 999;
+			top: 0;
+			display: flex;
+			align-items: center;
+			background-color: var(--bg7);
+			box-shadow: var(--shd);
+		}
+
+		header .space {
+			flex-grow: 1;
+		}
+
+		header .button {
+			width: 40px;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 40px;
+			background-color: var(--bg3);
+			margin-left: 10px;
+			cursor: pointer;
+			color: black;
+		}
+
+		header .button * {
+			color: black;
+		}
+
+		header .avatar {
+			box-shadow: var(--shd-inset);
+		}
+
+		.feedback-btn {
+			width: 200px !important;
+			font-weight: bold;
+		}
+
+
+		article {
+			width: 100vw;
+			max-width: 900px;
+			padding-left: 10px;
+			padding-right: 10px;
+			margin: 0 auto;
+		}
+
+		nav {
+			position: fixed;
+			z-index: 999;
+			width: 300px;
+			height: calc(100vh - 130px);
+			padding-left: 10px;
+			padding-right: 10px;
+			color: var(--secondary-text);
+		}
+
+		.joined-rooms {
+			top: 100px;
+			left: 0;
+		}
+
+		.friends {
+			top: 100px;
+			right: 0;
+		}
+
+		@media only screen and (max-width: 1500px) {
+			article {
+				width: calc(100% - 600px);
+			}
+		}
+
+		/* joined-rooms-item */
+		.joined-rooms-item {
+			width: 100%;
+			display: flex;
+			margin-bottom: 15px;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+
+		.joined-rooms-item .img {
+			width: 64px;
+			height: 64px;
+			border-radius: 10px;
+		}
+
+		.joined-rooms-item * {
+			font-weight: bold;
+		}
+
+		.joined-rooms-item .info {
+			height: 64px;
+			padding-left: 10px;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+		}
+
+		.joined-rooms-item .info * {
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		/* active */
+		.joined-rooms-item.active .img {
+			border: var(--border-highlight);
+			box-shadow: var(--shd-highlight);
+		}
+
+		/* friends-item */
+		.friends-item {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			margin-bottom: 15px;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+
+		.friends-item .img {
+			width: 36px;
+			height: 36px;
+			border-radius: 36px;
+		}
+
+		.friends-item * {
+			font-weight: bold;
+		}
+
+		.friends-item .name {
+			padding-left: 10px;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+	</style>
+
+	<!-- game channel -->
+	<style>
+		.game-channels-list {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 22px;
+		}
+
+		.game-channels-banner {
+			width: 100%;
+			height: 300px;
+			border-radius: 5px;
+			margin-bottom: 80px;
+		}
+
+		.dropdown-toggle {
+			color: var(--secondary-text);
+			font-size: var(--text-size-lg);
+			font-weight: bold;
+		}
+
+
+		/* rooms */
+		.rooms {
+			width: 100%;
+			max-height: 600px;
+			margin-bottom: 80px;
+		}
+
+		.rooms-item {
+			position: relative;
+			padding: 10px;
+			width: 270px;
+			height: 90px;
+			min-height: 90px;
+			border-radius: 10px;
+			overflow: hidden;
+			margin-right: 10px;
+			margin-bottom: 15px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			cursor: pointer;
+		}
+
+		.rooms-item * {
+			position: relative;
+			z-index: 1;
+			padding-bottom: 5px;
+			font-weight: bold;
+			white-space: nowrap;
+			overflow: hidden;
+			background-color: transparent;
+		}
+
+		.rooms-item::after {
+			position: absolute;
+			content: "";
+			z-index: 0;
+			left: 0;
+			background-color: rgba(0, 0, 0, .8);
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		.rooms-item-info * {
+			display: inline;
+		}
+
+		/* global chats */
+		.global-chats {
+			flex-grow: 1;
+			height: 100%;
+			overflow: auto;
+		}
+
+		.global-chats-item {
+			width: 100%;
+			margin-bottom: 15px;
+			display: flex;
+		}
+
+		.global-chats-item .avatar {
+			width: 24px;
+			min-width: 24px;
+			height: 24px;
+			border-radius: 24px;
+			margin-right: 10px;
+		}
+
+		.global-chats-item-body {
+			flex-grow: 1;
+			overflow: hidden;
+		}
+
+		.global-chats-item-body .name {
+			display: block;
+			width: 100%;
+			font-weight: bold;
+			color: var(--secondary-text) !important;
+			white-space: nowrap;
+			overflow: hidden;
+			font-size: var(--text-size-sm);
+			padding-bottom: 5px;
+		}
+
+		.global-chats-item-body .content {
+			background-color: var(--bg8);
+			padding: 5px 10px;
+			border-radius: 10px;
+			font-size: var(--text-size-sm);
+		}
+
+		.comments-box {
+			display: flex;
+			align-items: flex-start;
+			margin-bottom: 30px;
+		}
+
+		.comments-box .avatar {
+			width: 24px;
+			min-width: 24px;
+			height: 24px;
+			border-radius: 24px;
+			margin-right: 10px;
+		}
+
+		.comments-box .content {
+			flex-grow: 1;
+			border-radius: 10px;
+			background-color: var(--bg8);
+			border: none;
+			padding: 5px 10px;
+			resize: none;
+		}
+	</style>
+
+
+
+
+	<header>
+		<div class="logo img" style="background-image: url(img/logo.png)"></div>
+		<div class="space"></div>
+		<div class="button feedback-btn">Gửi phản hồi của bạn</div>
+		<div class="button">
+			<i class="fas fa-comment"></i>
+		</div>
+		<div class="avatar button img" style="background-image: url(img/avatar.jpg)"></div>
+	</header>
+
+
+	<!-- joined room -->
+	<nav class="component joined-rooms">
+		<div class="component-head">
+			<label>Phòng đã tham gia</label>
+			<div>
+				<i class="fas fa-search pr-3 rounded-circle bg-hover"></i><i class="fas fa-ellipsis-h rounded-circle bg-hover"></i>
+			</div>
+		</div>
+		<div class="component-body">
+
+			<div class="joined-rooms-item padding-hover active">
+				<div class="img" style="background-image: url(img/14.jpg)"></div>
+				<div class="info">
+					<p>Battlefield 1</p>
+					<p>#162</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/10.jpg)"></div>
+				<div class="info">
+					<p>Minecraft</p>
+					<p>#113</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/9.jpg)"></div>
+				<div class="info">
+					<p>Left 4 Dead 2</p>
+					<p>#33</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/13.jpg)"></div>
+				<div class="info">
+					<p>War of Tanks</p>
+					<p>#55</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/12.jpg)"></div>
+				<div class="info">
+					<p>Start Craft</p>
+					<p>#123</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/16.jpg)"></div>
+				<div class="info">
+					<p>Battlefield 4</p>
+					<p>#5</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/11.jpg)"></div>
+				<div class="info">
+					<p>Titanfall 2</p>
+					<p>#192</p>
+				</div>
+			</div>
+
+
+		</div>
+	</nav>
+
+	<!-- game channel -->
+	<article>
+		<div class="game-channels-list">
+			<label class="dropdown-toggle" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Left 4 Dead 2
+			</label>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" href="#">GTA 5</a>
+				<a class="dropdown-item" href="#">Minecraft</a>
+				<a class="dropdown-item" href="#">Left 4 Dead 2</a>
+				<a class="dropdown-item" href="#">War Frame</a>
+				<a class="dropdown-item" href="#">Titanfall 2</a>
+				<a class="dropdown-item" href="#">Start Craft</a>
+				<a class="dropdown-item" href="#">HearthStone</a>
+			</div>
+		</div>
+
+		<div class="game-channels-banner img" style="background-image: url(img/9.jpg)"></div>
+
+		<!-- rooms -->
+		<div class="rooms component">
+			<div class="component-head">
+				<label>Danh sách phòng</label>
+				<div>
+					<i class="fas fa-search pr-3 rounded-circle bg-hover"></i><i class="fas fa-ellipsis-h rounded-circle bg-hover"></i>
+				</div>
+			</div>
+			<div class="component-body pr-3 flex-row flex-wrap align-content-start">
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#1</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#2</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#3</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#4</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#5</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#6</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#7</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#8</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#9</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#10</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
+					<p>Nào mình cùng lên xe buýt</p>
+					<p>#11</p>
+					<div class="rooms-item-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+		<!-- global chats -->
+		<div class="global-chats component">
+			<div class="component-head">
+				<label>Kênh chat chung</label>
+				<div>
+					<i class="fas fa-search pr-3 rounded-circle bg-hover"></i><i class="fas fa-ellipsis-h rounded-circle bg-hover"></i>
+				</div>
+			</div>
+			<div class="component-body">
+
+				<div class="comments-box">
+					<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
+					<textarea aria-hidden="true" class="content" placeholder="Viết gì đó..."></textarea>
+					<i class="far fa-smile pl-2"></i>
+				</div>
+
+				<div class="pr-3">
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+					<div class="global-chats-item">
+						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
+						<div class="global-chats-item-body">
+							<a class="name">User name</a>
+							<pre
+								class="content">Content Content
+									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
+						</div>
+					</div>
+
+
+
+				</div>
+
+
+			</div>
+		</div>
+	</article>
+
+	<!-- friends -->
+	<nav class="component friends">
+		<div class="component-head">
+			<label>Bạn bè</label>
+			<div>
+				<i class="fas fa-search pr-3 rounded-circle bg-hover"></i><i class="fas fa-ellipsis-h rounded-circle bg-hover"></i>
+			</div>
+		</div>
+		<div class="component-body">
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/100.jpg)"></div>
+				<p class="name">Phong Nguyen</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/101.jpg)"></div>
+				<p class="name">Lĩnh Nguyễn</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/102.jpg)"></div>
+				<p class="name">Chương Đỗ</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/103.jpg)"></div>
+				<p class="name">Sanh Trần</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/104.jpg)"></div>
+				<p class="name">Nhân Nguyễn</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/105.jpg)"></div>
+				<p class="name">Huy Mai</p>
+			</div>
+
+
+		</div>
+	</nav>
+
+
+
+
+
+	<script>
+		function echo() {
+			Swal.fire({
+				title: '<strong>HTML <u>example</u></strong>',
+				icon: 'info',
+				html:
+					'You can use <b>bold text</b>, ' +
+					'<a href="#">links</a> ' +
+					'and other HTML tags',
+				showCloseButton: true,
+				showCancelButton: true,
+				focusCancel: true,
+				confirmButtonText:
+					'<i class="fa fa-thumbs-up"></i> Great!',
+				confirmButtonAriaLabel: 'Thumbs up, great!',
+				cancelButtonText:
+					'<i class="fa fa-thumbs-down"></i>',
+				cancelButtonAriaLabel: 'Thumbs down',
+				background: '#455A64',
+			})
+		}
+	</script>
+
+</body>
+
+</html>
