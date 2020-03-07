@@ -16,7 +16,7 @@
 	<!-- bootstrap -->
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap/bootstrap.popper.min.js"></script>
-	<script src="js/bootstrap/bootstrap.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
 	<!-- sweetalert -->
 	<script src="js/sweetalert2.js"></script>
 
@@ -118,6 +118,11 @@
 			word-break: break-word;
 		}
 
+		.logo {
+			width: 40px;
+			height: 40px;
+		}
+
 		/* component */
 		.component {
 			display: flex;
@@ -191,13 +196,6 @@
 			font-weight: bold;
 		}
 
-		.tooltip-inner {
-			background-color: var(--primary-text);
-			color: var(--bg9);
-			font-weight: bold;
-			padding: 6px 14px;
-		}
-
 		/* button */
 		.button {
 			height: 40px;
@@ -249,6 +247,16 @@
 			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='99' height='99' viewBox='0 0 120 120'%3E%3Cpolygon fill='%2337474f' fill-opacity='0.14' points='120 120 60 120 90 90 120 60 120 0 120 0 60 60 0 0 0 60 30 90 60 120 120 120 '/%3E%3C/svg%3E");
 			padding-top: 100px;
 		}
+
+		/* .background{
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			left: 0;
+			top: 0;
+			z-index: -1;
+			opacity: .05;
+		} */
 
 		header {
 			width: 100vw;
@@ -341,33 +349,6 @@
 			footer {
 				width: calc(100% - 600px);
 			}
-		}
-
-		/* navs */
-		.navs {
-			position: absolute;
-			top: 0;
-			left: calc(50% - 80px);
-			z-index: 11;
-			height: 100%;
-			display: flex;
-		}
-
-		.navs-item {
-			width: 80px;
-			height: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			transition: all .2s ease;
-		}
-
-		.navs-item:hover {
-			background-color: var(--bg6);
-		}
-
-		.navs-item.active {
-			border-top: 3px solid var(--highlight);
 		}
 
 		/* joined-rooms-item */
@@ -672,26 +653,21 @@
 		}
 	</style>
 
+	<!-- <div class="background img" style="background-image: url(img/background.jpg)"></div> -->
 
 
 	<header>
 		<div class="row m-0">
-			<svg width="40px" height="40px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"
-				xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
-				style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-				<g transform="matrix(-6.60965e-17,1,1,6.61098e-17,5.9952e-15,-1.42109e-14)">
-					<path
-						d="M21.667,73.809L21.667,33.867L49.997,17.679L78.334,33.867L78.334,66.13L49.997,82.321L35,73.75L35,41.604L49.997,33.034L65,41.604L65,58.392L49.997,66.963L48.334,66.013L48.334,49.343L56.716,44.551L49.997,40.713L41.667,45.476L41.667,69.88L49.997,74.642L71.667,62.259L71.667,37.737L49.997,25.358L28.334,37.737L28.334,77.617L49.997,90L85,70L85,30L49.997,10L15,30L15,70L21.667,73.809Z"
-						style="fill-rule:nonzero;"></path>
-				</g>
-			</svg>
+			<div class="logo img" style="background-image: url(img/logo.png)"></div>
 		</div>
-		<div class="navs">
-			<div class="navs-item active" data-toggle="tooltip" data-placement="bottom" title="Trò chơi">
-				<i class="fas fa-gamepad fa-2x"></i>
+		<div class="row m-0">
+			<div class="row m-0 flex-column">
+				<i class="fas fa-gamepad fa-lg" style="height: 40px;"></i>
+				<p>Trò chơi</p>
 			</div>
-			<div class="navs-item" data-toggle="tooltip" data-placement="bottom" title="Mạng xã hội">
-				<i class="fas fa-globe fa-2x"></i>
+			<div class="row m-0 flex-column">
+				<i class="fas fa-gamepad fa-lg" style="height: 40px;"></i>
+				<p>Trò chơi</p>
 			</div>
 		</div>
 		<div class="row m-0">
@@ -1181,7 +1157,7 @@
 	<footer>
 		<hr class="mb-4">
 		<div class="languages-list">
-			<i class="fas fa-globe-asia"></i>
+			<i class="fas fa-globe"></i>
 			<label class="dropdown-toggle" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Tiếng Việt
 			</label>
@@ -1355,10 +1331,6 @@ Mình có viết tài liệu Flutter (Lý thuyết và Thực hành) từ cơ b�
 
 		$(document).ready(() => {
 			renderNews();
-
-			$(function () {
-				$('[data-toggle="tooltip"]').tooltip()
-			})
 
 			setTimeout(() => {
 				generateMessages();
