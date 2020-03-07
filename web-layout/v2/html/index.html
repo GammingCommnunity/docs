@@ -19,6 +19,7 @@
 	<script src="js/bootstrap/bootstrap.min.js"></script>
 	<!-- sweetalert -->
 	<script src="js/sweetalert2.js"></script>
+
 	<!-- root -->
 	<style>
 		:root {
@@ -36,10 +37,11 @@
 			--primary-text: white;
 			--secondary-text: #C8C8C8;
 			/* shadow */
-			--shd: 3px 5px 9px rgba(0, 0, 0, .2);
-			--shd-inset: inset 1px 3px 9px black;
-			--shd-lg: 3px 5px 18px rgba(0, 0, 0, .4);
-			--shd-highlight: 3px 5px 9px rgba(0, 0, 0, .2), inset 1px 3px 9px black;
+			--shd: 3px 5px 8px rgba(0, 0, 0, .55);
+			--shd-inset: inset 4px 6px 8px rgba(0, 0, 0, .75);
+			--shd-lg: 9px 11px 18px rgba(0, 0, 0, .75);
+			--shd-sm: 1px 3px 6px rgba(0, 0, 0, .55);
+			--shd-highlight: 3px 5px 8px rgba(0, 0, 0, .55), inset 5px 7px 8px rgba(0, 0, 0, .75);
 			/* text size */
 			--text-size-sm: 12px;
 			--text-size-lg: 17px;
@@ -62,14 +64,15 @@
 		}
 
 		::-webkit-scrollbar {
-			width: 8px;
+			width: 7px;
+			height: 7px;
 			background-color: var(--bg8);
-			border-radius: 8px;
+			border-radius: 7px;
 		}
 
 		::-webkit-scrollbar-thumb {
 			background-color: var(--bg6);
-			border-radius: 8px;
+			border-radius: 7px;
 		}
 
 		pre {
@@ -82,12 +85,24 @@
 			color: var(--secondary-text);
 		}
 
+		a {
+			transition: all .4s ease;
+		}
 
+		a:hover {
+			color: var(--highlight);
+			text-decoration: underline var(--bg4);
+		}
+
+		hr {
+			border-top: 1px solid var(--bg8);
+		}
 
 
 
 
 		.img {
+			display: block;
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
@@ -137,35 +152,17 @@
 			display: flex;
 			flex-direction: column;
 			overflow: auto;
-		}
-
-		/* background hover */
-		.bg-hover {
-			transition: all .2s ease;
-		}
-
-		.bg-hover:hover {
-			background-color: var(--bg8);
+			padding-right: 30px;
 		}
 
 		/* padding hover */
 		.padding-hover {
-			transition: all .4s ease;
+			transition: all .3s ease;
 		}
 
 		.padding-hover:hover {
 			padding: 10px;
 			background-color: var(--bg8);
-		}
-
-		/* highlight hover */
-		.highlight-hover {
-			transition: all .2s ease;
-		}
-
-		.highlight-hover:hover {
-			border: 4px solid var(--highlight);
-			box-shadow: var(--shd-highlight);
 		}
 
 		/* fix bootstrap */
@@ -191,14 +188,56 @@
 			color: var(--bg6);
 			border-left: 4px solid var(--highlight);
 		}
+
+		.dropdown-toggle {
+			font-size: var(--text-size-lg);
+			font-weight: bold;
+		}
+
+		/* button */
+		.button {
+			width: 40px;
+			height: 40px;
+			min-height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 40px;
+			background-color: var(--bg6);
+			cursor: pointer;
+			font-weight: bold;
+			transition: all .2s ease;
+		}
+
+		.button:hover {
+			background-color: var(--bg5);
+		}
+
+		.button-light {
+			background-color: var(--bg8) !important;
+		}
+
+		.button-light:hover {
+			background-color: var(--bg7) !important;
+		}
+
+		/* underline */
+		.underline {
+			border-bottom: 1px solid var(--bg8);
+		}
 	</style>
 
 	<!-- framework -->
 	<style>
-		i {
+		.icon {
 			border-radius: 999px;
 			padding: 9px;
 			cursor: pointer;
+			transition: all .2s ease;
+		}
+
+		.icon:hover {
+			background-color: var(--bg8);
 		}
 
 		body {
@@ -226,20 +265,7 @@
 		}
 
 		header .button {
-			width: 40px;
-			height: 40px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			border-radius: 40px;
-			background-color: var(--bg3);
 			margin-left: 10px;
-			cursor: pointer;
-			color: black;
-		}
-
-		header .button * {
-			color: black;
 		}
 
 		header .avatar {
@@ -252,19 +278,41 @@
 		}
 
 
-		article {
+		article,
+		footer {
 			width: 100vw;
-			max-width: 900px;
-			padding-left: 10px;
-			padding-right: 10px;
+			max-width: 1050px;
 			margin: 0 auto;
+		}
+
+		footer {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 150px;
+			margin-bottom: 20px;
+		}
+
+		footer p {
+			color: var(--secondary-text);
+		}
+
+		footer .img{
+			width: 200px;
+			height: 180px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+
+		footer .bold * {
+			font-weight: bold;
 		}
 
 		nav {
 			position: fixed;
 			z-index: 999;
 			width: 300px;
-			height: calc(100vh - 130px);
+			height: calc(100vh - 110px);
 			padding-left: 10px;
 			padding-right: 10px;
 			color: var(--secondary-text);
@@ -277,11 +325,13 @@
 
 		.friends {
 			top: 100px;
-			right: 0;
+			left: calc(100vw - 300px);
 		}
 
-		@media only screen and (max-width: 1500px) {
-			article {
+		@media only screen and (max-width: 1650px) {
+
+			article,
+			footer {
 				width: calc(100% - 600px);
 			}
 		}
@@ -363,71 +413,64 @@
 
 		.game-channels-banner {
 			width: 100%;
-			height: 300px;
-			border-radius: 5px;
-			margin-bottom: 80px;
+			height: 290px;
+			margin-bottom: 60px;
 		}
 
-		.dropdown-toggle {
-			color: var(--secondary-text);
-			font-size: var(--text-size-lg);
-			font-weight: bold;
+		/* special rooms */
+		.special-rooms {
+			margin-bottom: 90px;
 		}
 
-
-		/* rooms */
-		.rooms {
-			width: 100%;
-			max-height: 600px;
-			margin-bottom: 80px;
-		}
-
-		.rooms-item {
+		.special-rooms-item {
 			position: relative;
-			padding: 10px;
-			width: 270px;
-			height: 90px;
-			min-height: 90px;
-			border-radius: 10px;
-			overflow: hidden;
-			margin-right: 10px;
-			margin-bottom: 15px;
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
+			width: 160px;
+			min-width: 160px;
+			height: 220px;
+			padding: 110px 10px 10px 10px;
+			margin-right: 22px;
+			margin-bottom: 30px;
+			box-shadow: var(--shd-sm);
+			overflow: hidden;
 			cursor: pointer;
+			transition: all .4s ease;
 		}
 
-		.rooms-item * {
+		.special-rooms-item:hover {
+			background-position-x: left;
+			border: 2px solid var(--highlight);
+			box-shadow: unset;
+		}
+
+		.special-rooms-item * {
+			font-weight: bold;
 			position: relative;
 			z-index: 1;
-			padding-bottom: 5px;
-			font-weight: bold;
-			white-space: nowrap;
-			overflow: hidden;
-			background-color: transparent;
 		}
 
-		.rooms-item::after {
-			position: absolute;
+		.special-rooms-item::after {
 			content: "";
-			z-index: 0;
-			left: 0;
-			background-color: rgba(0, 0, 0, .8);
-			display: block;
 			width: 100%;
-			height: 100%;
+			height: calc(100% - 100px);
+			background-color: rgba(0, 0, 0, .9);
+			position: absolute;
+			left: 0;
+			top: 100px;
 		}
 
-		.rooms-item-info * {
-			display: inline;
+		.special-rooms-item .title {
+			flex-grow: 1;
+			overflow: hidden;
 		}
 
 		/* global chats */
 		.global-chats {
+			max-height: 800px;
 			flex-grow: 1;
-			height: 100%;
 			overflow: auto;
+			margin-top: 90px;
 		}
 
 		.global-chats-item {
@@ -437,10 +480,10 @@
 		}
 
 		.global-chats-item .avatar {
-			width: 36px;
-			min-width: 36px;
-			height: 36px;
-			border-radius: 36px;
+			width: 24px;
+			min-width: 24px;
+			height: 24px;
+			border-radius: 24px;
 			margin-top: 5px;
 			margin-right: 10px;
 		}
@@ -471,14 +514,14 @@
 		.messages-box {
 			display: flex;
 			align-items: flex-start;
-			margin-bottom: 30px;
+			margin-top: 15px;
 		}
 
 		.messages-box .avatar {
-			width: 36px;
-			min-width: 36px;
-			height: 36px;
-			border-radius: 36px;
+			width: 24px;
+			min-width: 24px;
+			height: 24px;
+			border-radius: 24px;
 			margin-right: 10px;
 		}
 
@@ -489,6 +532,110 @@
 			border: none;
 			padding: 5px 10px;
 			resize: none;
+		}
+
+		.messages-container {
+			overflow: auto;
+		}
+
+		/* news */
+		.news {
+			width: 300px;
+			min-width: 300px;
+			max-height: 600px;
+			margin-right: 40px;
+		}
+
+		.news-item {
+			position: relative;
+			width: 100%;
+			height: 120px;
+			min-height: 120px;
+			margin-bottom: 15px;
+		}
+
+		.news-item .img {
+			width: 90px;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			border-radius: 10px;
+			transition: all .5s ease;
+		}
+
+		.news-item .img:hover {
+			background-position-x: left;
+		}
+
+		.news-item .title {
+			display: block;
+			width: calc(100% - 100px);
+			max-height: 53%;
+			overflow: hidden;
+			margin-left: 100px;
+			font-weight: bold;
+		}
+
+		.news-item .content {
+			width: calc(100% - 100px);
+			max-height: 46.9%;
+			overflow: hidden;
+			margin-left: 100px;
+			color: var(--secondary-text) !important;
+			font-size: var(--text-size-sm);
+		}
+
+		/* rooms */
+		.rooms {
+			width: 100%;
+			margin-top: 120px;
+			overflow: auto;
+		}
+
+		.rooms-item {
+			width: 100%;
+			padding: 10px;
+			display: flex;
+			margin-bottom: 15px;
+			border-radius: 10px;
+			overflow: hidden;
+			cursor: pointer;
+			background-color: var(--bg8);
+			transition: all .6s ease;
+		}
+
+		.rooms-item .img {
+			width: 64px;
+			min-width: 64px;
+			height: 64px;
+			border-radius: 10px;
+			margin-right: 10px;
+			box-shadow: var(--shd-inset);
+			transition: all .4s ease;
+		}
+
+		.rooms-item:hover {
+			border-left: 6px solid var(--highlight);
+		}
+
+		.rooms-item:hover .img {
+			width: 100px;
+			min-width: 100px;
+		}
+
+		.rooms-item-info {
+			flex-grow: 1;
+			overflow: hidden;
+		}
+
+		.rooms-item-info * {
+			font-weight: bold;
+			white-space: nowrap;
+		}
+
+		.rooms-item-detail-info * {
+			display: inline;
 		}
 	</style>
 
@@ -508,13 +655,14 @@
 
 	<!-- joined room -->
 	<nav class="component joined-rooms">
-		<div class="component-head">
+		<div class="component-head underline">
 			<label>Phòng đã tham gia</label>
 			<div>
-				<i class="fas fa-search mr-1 bg-hover"></i><i class="fas fa-ellipsis-h bg-hover"></i>
+				<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
 			</div>
 		</div>
-		<div class="component-body">
+
+		<div class="component-body flex-grow-0">
 
 			<div class="joined-rooms-item padding-hover active">
 				<div class="img" style="background-image: url(img/14.jpg)"></div>
@@ -574,13 +722,15 @@
 
 
 		</div>
+
+		<div class="button button-light w-100 mt-3 rounded">Tìm phòng nhanh</div>
 	</nav>
 
 	<!-- game channel -->
 	<article>
 		<div class="game-channels-list">
 			<label class="dropdown-toggle" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Left 4 Dead 2
+				HearthStone
 			</label>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				<a class="dropdown-item" href="#">GTA 5</a>
@@ -589,638 +739,348 @@
 				<a class="dropdown-item" href="#">War Frame</a>
 				<a class="dropdown-item" href="#">Titanfall 2</a>
 				<a class="dropdown-item" href="#">Start Craft</a>
-				<a class="dropdown-item" href="#">HearthStone</a>
+				<a class="dropdown-item" href="#">Battlefield 4</a>
 			</div>
 		</div>
 
-		<div class="game-channels-banner img" style="background-image: url(img/9.jpg)"></div>
+		<!-- banner -->
+		<div class="game-channels-banner img rounded" style="background-image: url(img/9.jpg)"></div>
+
+		<!-- special rooms -->
+		<div class="special-rooms component">
+			<div class="component-head">
+				<label>Danh sách phòng chat nổi bật</label>
+				<div>
+					<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
+				</div>
+			</div>
+
+			<div class="component-body flex-row p-0">
+
+				<div class="special-rooms-item highlight-hover img rounded" onclick="echo()"
+					style="background-image: url(img/9.jpg)">
+					<p class="title">Nào mình cùng lên xe buýt</p>
+					<p>#1</p>
+					<div class="rooms-item-detail-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="special-rooms-item highlight-hover img rounded" onclick="echo()"
+					style="background-image: url(img/9.jpg)">
+					<p class="title">Nào mình cùng lên xe buýt</p>
+					<p>#1</p>
+					<div class="rooms-item-detail-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="special-rooms-item highlight-hover img rounded" onclick="echo()"
+					style="background-image: url(img/9.jpg)">
+					<p class="title">Nào mình cùng lên xe buýt</p>
+					<p>#1</p>
+					<div class="rooms-item-detail-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="special-rooms-item highlight-hover img rounded" onclick="echo()"
+					style="background-image: url(img/9.jpg)">
+					<p class="title">Nào mình cùng lên xe buýt</p>
+					<p>#1</p>
+					<div class="rooms-item-detail-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="special-rooms-item highlight-hover img rounded" onclick="echo()"
+					style="background-image: url(img/9.jpg)">
+					<p class="title">Nào mình cùng lên xe buýt</p>
+					<p>#1</p>
+					<div class="rooms-item-detail-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="special-rooms-item highlight-hover img rounded" onclick="echo()"
+					style="background-image: url(img/9.jpg)">
+					<p class="title">Nào mình cùng lên xe buýt</p>
+					<p>#1</p>
+					<div class="rooms-item-detail-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="special-rooms-item highlight-hover img rounded" onclick="echo()"
+					style="background-image: url(img/9.jpg)">
+					<p class="title">Nào mình cùng lên xe buýt</p>
+					<p>#1</p>
+					<div class="rooms-item-detail-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="special-rooms-item highlight-hover img rounded" onclick="echo()"
+					style="background-image: url(img/9.jpg)">
+					<p class="title">Nào mình cùng lên xe buýt</p>
+					<p>#1</p>
+					<div class="rooms-item-detail-info">
+						<i class="fas fa-globe-americas pr-2"></i>
+						<div class="member-num">
+							2/3
+							<i class="fas fa-users"></i>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="news-and-global-chats row m-0">
+			<!-- news -->
+			<div class="news component">
+				<div class="component-head">
+					<label>Bản tin game</label>
+					<div>
+						<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
+					</div>
+				</div>
+				<div class="news-container component-body">
+
+					<!-- <div class="news-item"></div> -->
+
+				</div>
+
+				<div class="button button-light w-100 mt-3 rounded">Xem thêm</div>
+			</div>
+
+			<!-- global chats -->
+			<div class="global-chats component col mt-0 p-0">
+				<div class="component-head">
+					<label>Kênh chat chung</label>
+					<div>
+						<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
+					</div>
+				</div>
+				<div class="messages-container component-body flex-grow-0">
+
+					<!-- <div class="global-chats-item"></div> -->
+
+				</div>
+				<div class="messages-box">
+					<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
+					<input contenteditable class="content" placeholder="Viết gì đó..." onkeydown="send(event)">
+					<i class="far fa-smile pl-2"></i>
+				</div>
+			</div>
+		</div>
 
 		<!-- rooms -->
 		<div class="rooms component">
 			<div class="component-head">
-				<label>Danh sách phòng</label>
+				<label>Danh sách phòng chat</label>
 				<div>
-					<i class="fas fa-search mr-1 bg-hover"></i><i class="fas fa-ellipsis-h bg-hover"></i>
+					<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
 				</div>
 			</div>
-			<div class="component-body pr-3 flex-row flex-wrap align-content-start">
+			<div class="rooms-body component-body p-0">
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#1</p>
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#2</p>
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#3</p>
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#4</p>
+
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#5</p>
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#6</p>
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#7</p>
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#8</p>
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#9</p>
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#10</p>
+				<div class="rooms-item highlight-hover" onclick="echo()">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
 					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
+						<p>Nào mình cùng lên xe buýt</p>
+						<p>#1</p>
+						<div class="rooms-item-detail-info">
+							<i class="fas fa-globe-americas pr-2"></i>
+							<div class="member-num">
+								2/3
+								<i class="fas fa-users"></i>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
-				<div class="rooms-item img highlight-hover" style="background-image: url(img/9.jpg)" onclick="echo()">
-					<p>Nào mình cùng lên xe buýt</p>
-					<p>#11</p>
-					<div class="rooms-item-info">
-						<i class="fas fa-globe-americas pr-2"></i>
-						<div class="member-num">
-							2/3
-							<i class="fas fa-users"></i>
-						</div>
-					</div>
-				</div>
-
 
 			</div>
+
+			<div class="button button-light w-100 mt-3 rounded">Xem thêm</div>
 		</div>
 
-		<!-- global chats -->
-		<div class="global-chats component">
-			<div class="component-head">
-				<label>Kênh chat chung</label>
-				<div>
-					<i class="fas fa-search mr-1 bg-hover"></i><i class="fas fa-ellipsis-h bg-hover"></i>
-				</div>
-			</div>
-			<div class="component-body">
 
-				<div class="messages-box">
-					<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
-					<textarea aria-hidden="true" class="content" placeholder="Viết gì đó..."
-						onkeydown="send(event)"></textarea>
-					<i class="far fa-smile pl-2"></i>
-				</div>
-
-				<div class="messages-container pr-3">
-
-					<div class="global-chats-item">
-						<div class="avatar img" style="background-image: url(img/100.jpg)"></div>
-						<div class="global-chats-item-body">
-							<a class="name">User name</a>
-							<pre
-								class="content">Content Content
-									ContentContent Content Content ContentContentContent ContentContent Content Content Content Content Content Content Content Content Content Content ContentContentContent</pre>
-						</div>
-					</div>
-
-
-
-
-				</div>
-
-
-			</div>
-		</div>
 	</article>
 
 	<!-- friends -->
 	<nav class="component friends">
-		<div class="component-head">
+		<div class="component-head underline">
 			<label>Bạn bè</label>
 			<div>
-				<i class="fas fa-search mr-1 bg-hover"></i><i class="fas fa-ellipsis-h bg-hover"></i>
+				<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
 			</div>
 		</div>
-		<div class="component-body">
+		<div class="component-body flex-grow-0">
 
 			<div class="friends-item padding-hover">
 				<div class="img" style="background-image: url(img/100.jpg)"></div>
@@ -1254,10 +1114,28 @@
 
 
 		</div>
+
+		<div class="button button-light w-100 mt-3 rounded">Kết bạn</div>
 	</nav>
 
 
-
+	<footer>
+		<div class="languages-list">
+			<i class="fas fa-globe"></i>
+			<label class="dropdown-toggle" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Tiếng Việt
+			</label>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" href="#">Tiếng Việt</a>
+				<a class="dropdown-item" href="#">English</a>
+			</div>
+		</div>
+		<div class="img" style="background-image: url(img/full_logo.png)"></div>
+		<p class="bold"><a href="#" target="_blank">ABOUT</a> | <a href="#" target="_blank">SUPPORT</a> | <a href="#" target="_blank">CONTACT US</a></p>
+		<p>©2020 GAMING COMMUNITY, INC. ALL RIGHTS RESERVED.</p>
+		<p>All trademarks referenced herein are the properties of their respective owners..</p>
+		<p><a href="#" target="_blank">PRIVACY</a> | <a href="#" target="_blank">LEGAL</a> | <a href="#" target="_blank">TERMS</a> | <a href="#" target="_blank">COOKIES</a></p>
+	</footer>
 
 
 	<script>
@@ -1354,9 +1232,16 @@ Mình có viết tài liệu Flutter (Lý thuyết và Thực hành) từ cơ b�
 			})
 		}
 
+		function appendMessages(content) {
+			const TARGET = $('.messages-container');
+
+			TARGET.append(content);
+			TARGET.animate({ scrollTop: TARGET[0].scrollHeight }, 0);
+		}
+
 		function send(event) {
 			// Number 13 is the "Enter" key on the keyboard
-			if (event.keyCode === 13) {
+			if (event.keyCode === 13 && !event.shiftKey && !event.ctrlKey) {
 				// Cancel the default action, if needed
 				event.preventDefault();
 				// Trigger the button element with a click
@@ -1364,42 +1249,79 @@ Mình có viết tài liệu Flutter (Lý thuyết và Thực hành) từ cơ b�
 				const CONTENT = MESSAGE_BOX.value;
 				if (CONTENT) {
 					MESSAGE_BOX.value = '';
-					const HTML = `<div class="global-chats-item">
-						<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
-						<div class="global-chats-item-body">
-							<a class="name">${getRandomUsername()}</a>
-							<pre class="content">${CONTENT}</pre>
-						</div>
-					</div>`;
+					const HTML = `
+						<div class="global-chats-item">
+							<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
+							<div class="global-chats-item-body">
+								<a class="name">${getRandomUsername()}</a>
+								<pre class="content">${CONTENT}</pre>
+							</div>
+						</div>`;
 
-					$('.messages-container').prepend(HTML);
+					appendMessages(HTML);
 				}
 			}
 		}
 
 
+		function appendNews(title, link, img, content) {
+			const HTML = `
+				<div class="news-item">
+					<a class="img" href="${link}" target="_blank" style="background-image: url(${img})"></a>
+					<a class="title wrap" href="${link}" target="_blank">${title}</a>
+					<pre class="content">${content}</pre>
+				</div>`;
+
+			$('.news-container').append(HTML);
+		}
+
 		function generateMessages() {
 			setTimeout(() => {
-				const HTML = `<div class="global-chats-item">
+				const HTML = `
+					<div class="global-chats-item">
 						<div class="avatar img" style="background-image: url(img/${getRandomAvatarNum()}.jpg)"></div>
 						<div class="global-chats-item-body">
 							<a class="name">${getRandomUsername()}</a>
 							<pre class="content">${getRandomContent()}</pre>
 						</div>
 					</div>`;
-				$('.messages-container').prepend(HTML);
+				appendMessages(HTML);
 
 				generateMessages();
-			}, 200 + Math.floor(Math.random() * 900));
+			}, 10 + Math.floor(Math.random() * 1500));
 		}
 
 		$(document).ready(() => {
+			renderNews();
 
 			setTimeout(() => {
 				generateMessages();
-				generateMessages();
 			}, 2000);
 		});
+
+		function renderNews() {
+			const TITLE = '.media__bd--news .media--link';
+			const CONTENT = '.article-summary';
+
+			$.ajax({
+				url: 'https://equal-spectacles.glitch.me',
+				method: 'GET',
+				success: result => {
+					const TITLES = $(result).find(TITLE);
+					const IMGS = $(result).find('img');
+					const CONTENTS = $(result).find(CONTENT);
+
+					for (i = 0; i < TITLES.length; i++) {
+						appendNews(
+							TITLES[i].innerHTML,
+							'https://playhearthstone.com' + TITLES[i].attributes.href.value,
+							'http:' + IMGS[i].dataset.src,
+							CONTENTS[i].innerHTML
+						);
+					}
+				}
+			});
+		}
 	</script>
 
 </body>
