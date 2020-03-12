@@ -88,12 +88,9 @@
 			padding: 0;
 		}
 
-		html * {
+		body {
 			font-size: 15px;
 			color: var(--primary-text);
-		}
-
-		body {
 			font-family: Roboto, Arial, sans-serif;
 		}
 
@@ -557,28 +554,27 @@
 			min-width: 24px;
 			height: 24px;
 			border-radius: 24px;
-			margin-top: 2x;
+			margin-top: 5px;
 			margin-right: 10px;
 		}
 
 		.global-chats-item-body {
 			flex-grow: 1;
-			overflow: hidden;
+			
+			
 		}
 
 		.global-chats-item-body .name {
-			display: inline-block;
 			max-width: 80%;
-			padding: 5px;
+			padding-right: 5px;
 			font-weight: bold;
 			color: var(--secondary-text) !important;
 			white-space: nowrap;
-			font-size: var(--text-size-sm);
 			overflow: hidden;
-			line-height: 0;
+			font-size: var(--text-size-sm);
 		}
 
-		.global-chats-item-body .name::after {
+		.global-chats-item-body .name::after{
 			content: ':';
 		}
 
@@ -588,7 +584,7 @@
 
 		.messages-box {
 			display: flex;
-			align-items: baseline;
+			align-items: flex-start;
 			margin-top: 15px;
 		}
 
@@ -601,7 +597,6 @@
 		}
 
 		.messages-box .content {
-			min-width: 0;
 			flex-grow: 1;
 			border-radius: 10px;
 			background-color: var(--bg8);
@@ -665,7 +660,7 @@
 		}
 
 		/* rooms */
-		.rooms {
+		.rooms{
 			width: 50%;
 		}
 
@@ -980,9 +975,7 @@
 					</div>
 					<div class="messages-box">
 						<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
-						<input contenteditable class="messages-box-content content" placeholder="Viết gì đó..."
-							onkeyup="updateMessagesBoxLength()" onkeydown="send(event)">
-						<p class="messages-box-length ml-2">0/100</p>
+						<input contenteditable class="content" placeholder="Viết gì đó..." onkeydown="send(event)">
 						<i class="far fa-smile pl-2"></i>
 					</div>
 				</div>
@@ -1348,11 +1341,7 @@ Mình có viết tài liệu Flutter (Lý thuyết và Thực hành) từ cơ b�
 			const TARGET = $('.messages-container');
 
 			TARGET.append(content);
-			TARGET.animate({ scrollTop: TARGET[0].scrollHeight }, 0);
-		}
-
-		function updateMessagesBoxLength() {
-			$('.messages-box-length')[0].innerHTML = $('.messages-box-content').val().length + '/100';
+			// TARGET.animate({ scrollTop: TARGET[0].scrollHeight }, 0);
 		}
 
 		function send(event) {
@@ -1363,7 +1352,7 @@ Mình có viết tài liệu Flutter (Lý thuyết và Thực hành) từ cơ b�
 				// Trigger the button element with a click
 				const MESSAGE_BOX = event.target;
 				const CONTENT = MESSAGE_BOX.value;
-				if (CONTENT && CONTENT.length < 101) {
+				if (CONTENT) {
 					MESSAGE_BOX.value = '';
 					const HTML = `
 						<div class="global-chats-item">
@@ -1377,7 +1366,6 @@ Mình có viết tài liệu Flutter (Lý thuyết và Thực hành) từ cơ b�
 					appendMessages(HTML);
 				}
 			}
-
 		}
 
 
@@ -1405,7 +1393,7 @@ Mình có viết tài liệu Flutter (Lý thuyết và Thực hành) từ cơ b�
 				appendMessages(HTML);
 
 				generateMessages();
-			}, Math.floor(Math.random() * 1300));
+			}, 10 + Math.floor(Math.random() * 1500));
 		}
 
 		$(document).ready(() => {
