@@ -657,8 +657,6 @@
 			z-index: 3;
 			top: 0;
 
-			overflow: auto;
-
 			width: 300px;
 			height: 100%;
 
@@ -668,7 +666,8 @@
 			padding: 90px 10px 10px 10px;
 		}
 
-		nav > .body {
+		nav .body {
+			flex-grow: 1;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -919,7 +918,7 @@
 
 			height: 100%;
 
-			margin-right: 40px;
+			height: 100%;
 		}
 
 		.rooms-body {
@@ -1134,14 +1133,13 @@
 			</div>
 
 			<div class="game-channels-body">
-
+				
 				<!-- rooms -->
 				<div class="rooms">
 					<div class="head">
 						<label>Danh sách phòng chat</label>
-						<div class="row">
-							<i class="fas fa-search mr-1 btn btn-sm rounded-circle"></i>
-							<i class="fas fa-ellipsis-h btn btn-sm rounded-circle mr-0"></i>
+						<div>
+							<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
 						</div>
 					</div>
 					<div class="rooms-body">
@@ -1293,9 +1291,9 @@
 						</div>
 					</div>
 					<div class="global-chats-body">
-
+				
 						<!-- <div class="global-chats-items"></div> -->
-
+				
 					</div>
 					<div class="messages-box">
 						<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>

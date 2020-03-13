@@ -657,8 +657,6 @@
 			z-index: 3;
 			top: 0;
 
-			overflow: auto;
-
 			width: 300px;
 			height: 100%;
 
@@ -668,7 +666,8 @@
 			padding: 90px 10px 10px 10px;
 		}
 
-		nav > .body {
+		nav .body {
+			flex-grow: 1;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -821,6 +820,8 @@
 
 			display: flex;
 			flex-direction: column;
+
+			margin-right: 40px;
 		}
 
 		.global-chats-body {
@@ -919,7 +920,7 @@
 
 			height: 100%;
 
-			margin-right: 40px;
+			height: 100%;
 		}
 
 		.rooms-body {
@@ -1134,14 +1135,35 @@
 			</div>
 
 			<div class="game-channels-body">
+				<!-- global chats -->
+				<div class="global-chats">
+					<div class="head">
+						<label>Kênh chat chung</label>
+						<div class="row">
+							<i class="fas fa-search mr-1 btn btn-sm rounded-circle"></i>
+							<i class="fas fa-ellipsis-h btn btn-sm rounded-circle mr-0"></i>
+						</div>
+					</div>
+					<div class="global-chats-body">
+
+						<!-- <div class="global-chats-items"></div> -->
+
+					</div>
+					<div class="messages-box">
+						<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
+						<input contenteditable class="messages-box-content" placeholder="Viết gì đó..."
+							onkeyup="updateMessagesBoxLength()" onkeydown="send(event)">
+						<p class="messages-box-length ml-2">0/100</p>
+						<i class="far fa-smile pl-2"></i>
+					</div>
+				</div>
 
 				<!-- rooms -->
 				<div class="rooms">
 					<div class="head">
 						<label>Danh sách phòng chat</label>
-						<div class="row">
-							<i class="fas fa-search mr-1 btn btn-sm rounded-circle"></i>
-							<i class="fas fa-ellipsis-h btn btn-sm rounded-circle mr-0"></i>
+						<div>
+							<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
 						</div>
 					</div>
 					<div class="rooms-body">
@@ -1282,31 +1304,6 @@
 
 					<div class="btn btn-content m-0 mt-3">Tạo phòng</div>
 				</div>
-
-				<!-- global chats -->
-				<div class="global-chats">
-					<div class="head">
-						<label>Kênh chat chung</label>
-						<div class="row">
-							<i class="fas fa-search mr-1 btn btn-sm rounded-circle"></i>
-							<i class="fas fa-ellipsis-h btn btn-sm rounded-circle mr-0"></i>
-						</div>
-					</div>
-					<div class="global-chats-body">
-
-						<!-- <div class="global-chats-items"></div> -->
-
-					</div>
-					<div class="messages-box">
-						<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
-						<input contenteditable class="messages-box-content" placeholder="Viết gì đó..."
-							onkeyup="updateMessagesBoxLength()" onkeydown="send(event)">
-						<p class="messages-box-length ml-2">0/100</p>
-						<i class="far fa-smile pl-2"></i>
-					</div>
-				</div>
-
-
 			</div>
 		</div>
 	</article>

@@ -657,8 +657,6 @@
 			z-index: 3;
 			top: 0;
 
-			overflow: auto;
-
 			width: 300px;
 			height: 100%;
 
@@ -668,10 +666,12 @@
 			padding: 90px 10px 10px 10px;
 		}
 
-		nav > .body {
+		nav .body {
+			flex-grow: 1;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			justify-content: start;
 
 			overflow: auto;
 
@@ -1134,7 +1134,7 @@
 			</div>
 
 			<div class="game-channels-body">
-
+				
 				<!-- rooms -->
 				<div class="rooms">
 					<div class="head">
@@ -1293,9 +1293,9 @@
 						</div>
 					</div>
 					<div class="global-chats-body">
-
+				
 						<!-- <div class="global-chats-items"></div> -->
-
+				
 					</div>
 					<div class="messages-box">
 						<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
