@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- afvicon -->
+	<link rel="icon" type='image/x-icon' href='favicon.ico' />
+	<!-- title -->
+	<title>Gaming Community</title>
+	<!-- fontawesome -->
+	<link href="fontawesome-free-5.12.1-web/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- sweetalert -->
+	<script src="js/sweetalert2.js"></script>
+
+	<!-- root styles -->
+	<style>
+		:root {
+			/* background color */
+			--bg9: #263238;
+			--bg8: #37474F;
+			--bg7: #455A64;
+			--bg6: #546E7A;
+			--bg5: #607D8B;
+			--bg4: #78909C;
+			--bg3: #90A4AE;
+			--bg2: #B0BEC5;
+			--bg1: #CFD8DC;
+			/* text color */
+			--primary-text: #e4e6eb;
+			--secondary-text: #B2B4B9;
+			/* shadow */
+			--shd: 3px 5px 8px rgba(0, 0, 0, .55);
+			--shd-inset: inset 3px 5px 8px rgba(0, 0, 0, .85);
+			--shd-lg: 9px 11px 18px rgba(0, 0, 0, .45);
+			--shd-sm: 1px 3px 5px rgba(0, 0, 0, .8);
+			--shd-highlight: 3px 5px 8px rgba(0, 0, 0, .45), inset 4px 6px 8px rgba(0, 0, 0, .9);
+			/* text size */
+			--text-size-sm: 12px;
+			--text-size-lg: 18px;
+			/* highlight */
+			--highlight: #66f3d4;
+			--border-highlight: 4px solid var(--highlight);
+		}
+	</style>
+
+	<!-- gc styles -->
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Roboto, Arial, sans-serif;
+		}
+
+		body * {
+			font-size: 15px;
+			color: var(--primary-text);
+		}
+
+		::-webkit-scrollbar {
+			width: 7px;
+			height: 7px;
+			background-color: var(--bg8);
+			border-radius: 7px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: var(--bg6);
+			border-radius: 7px;
+		}
+
+		textarea::placeholder,
+		input::placeholder {
+			color: var(--secondary-text);
+		}
+
+		a {
+			transition: all .4s ease;
+		}
+
+		a:hover {
+			color: var(--highlight);
+			text-decoration: underline var(--bg4);
+		}
+
+		hr {
+			border-top: 1px solid var(--bg8);
+			width: 100%;
+		}
+
+
+
+
+		.img {
+			display: block;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.nowrap {
+			white-space: nowrap;
+		}
+
+		.wrap {
+			white-space: pre-line;
+			word-break: break-word;
+		}
+
+		/* component */
+		.component {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.component-head {
+			display: flex;
+			align-items: center;
+			margin-bottom: 22px;
+		}
+
+		.component-head * {
+			color: var(--secondary-text);
+		}
+
+		.component-head label {
+			margin-right: 10px;
+			font-weight: bold;
+			font-size: var(--text-size-lg);
+			flex-grow: 1;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		.component .component-body {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			overflow: auto;
+			padding-right: 30px;
+		}
+
+		/* button */
+		.btn {
+			height: 40px;
+			min-height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: var(--bg8);
+			cursor: pointer;
+			font-weight: bold;
+			transition: all .2s ease;
+		}
+
+		.btn:hover {
+			background-color: var(--bg7);
+		}
+
+		.btn-light {
+			background-color: var(--bg6) !important;
+		}
+
+		.btn-light:hover {
+			background-color: var(--bg5) !important;
+		}
+
+		/* rows */
+		.row{
+			display: flex;
+			align-items: center;
+		}
+	</style>
+
+	<!-- main styles -->
+	<style>
+		body {
+			position: relative;
+			background-color: var(--bg9);
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='99' height='99' viewBox='0 0 120 120'%3E%3Cpolygon fill='%2337474f' fill-opacity='0.14' points='120 120 60 120 90 90 120 60 120 0 120 0 60 60 0 0 0 60 30 90 60 120 120 120 '/%3E%3C/svg%3E");
+			padding-top: 100px;
+		}
+
+		header {
+			width: 100vw;
+			height: 60px;
+		}
+	</style>
+
+	<header>
+		<svg width="40px" height="40px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+			style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+			<g transform="matrix(-6.60965e-17,1,1,6.61098e-17,5.9952e-15,-1.42109e-14)">
+				<path
+					d="M21.667,73.809L21.667,33.867L49.997,17.679L78.334,33.867L78.334,66.13L49.997,82.321L35,73.75L35,41.604L49.997,33.034L65,41.604L65,58.392L49.997,66.963L48.334,66.013L48.334,49.343L56.716,44.551L49.997,40.713L41.667,45.476L41.667,69.88L49.997,74.642L71.667,62.259L71.667,37.737L49.997,25.358L28.334,37.737L28.334,77.617L49.997,90L85,70L85,30L49.997,10L15,30L15,70L21.667,73.809Z"
+					style="fill-rule:nonzero;"></path>
+			</g>
+		</svg>
+		<div class="navs">
+			<div class="navs-item active" data-toggle="tooltip" data-placement="bottom" title="Trò chơi">
+				<i class="fas fa-gamepad fa-2x"></i>
+			</div>
+			<div class="navs-item" data-toggle="tooltip" data-placement="bottom" title="Mạng xã hội">
+				<i class="fas fa-globe fa-2x"></i>
+			</div>
+		</div>
+		<div class="row m-0">
+			<div class="button feedback-btn">Gửi phản hồi của bạn</div>
+			<div class="button">
+				<i class="fas fa-comment"></i>
+			</div>
+			<div class="button">
+				<i class="fas fa-bell"></i>
+			</div>
+			<div class="avatar button img" style="background-image: url(img/avatar.jpg)"></div>
+		</div>
+	</header>
+
+
+	<!-- joined room -->
+	<nav class="component joined-rooms">
+		<div class="component-head underline">
+			<label>Phòng đã tham gia</label>
+			<div>
+				<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
+			</div>
+		</div>
+
+		<div class="component-body flex-grow-0">
+
+			<div class="joined-rooms-item padding-hover active">
+				<div class="img" style="background-image: url(img/14.jpg)"></div>
+				<div class="info">
+					<p>Battlefield 1</p>
+					<p>#162</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/10.jpg)"></div>
+				<div class="info">
+					<p>Minecraft</p>
+					<p>#113</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/9.jpg)"></div>
+				<div class="info">
+					<p>Left 4 Dead 2</p>
+					<p>#33</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/13.jpg)"></div>
+				<div class="info">
+					<p>War of Tanks</p>
+					<p>#55</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/12.jpg)"></div>
+				<div class="info">
+					<p>Start Craft</p>
+					<p>#123</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/16.jpg)"></div>
+				<div class="info">
+					<p>Battlefield 4</p>
+					<p>#5</p>
+				</div>
+			</div>
+
+			<div class="joined-rooms-item padding-hover">
+				<div class="img" style="background-image: url(img/11.jpg)"></div>
+				<div class="info">
+					<p>Titanfall 2</p>
+					<p>#192</p>
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="button button-light w-100 mt-3 rounded">Tìm phòng nhanh</div>
+	</nav>
+
+	<!-- friends -->
+	<nav class="component friends">
+		<div class="component-head underline">
+			<label>Bạn bè</label>
+			<div>
+				<i class="fas fa-search mr-1 icon"></i><i class="fas fa-ellipsis-h icon"></i>
+			</div>
+		</div>
+		<div class="component-body flex-grow-0">
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/100.jpg)"></div>
+				<p class="name">Phong Nguyen</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/101.jpg)"></div>
+				<p class="name">Lĩnh Nguyễn</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/102.jpg)"></div>
+				<p class="name">Chương Đỗ</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/103.jpg)"></div>
+				<p class="name">Sanh Trần</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/104.jpg)"></div>
+				<p class="name">Nhân Nguyễn</p>
+			</div>
+
+			<div class="friends-item padding-hover">
+				<div class="img" style="background-image: url(img/105.jpg)"></div>
+				<p class="name">Huy Mai</p>
+			</div>
+
+
+		</div>
+
+		<div class="button button-light w-100 mt-3 rounded">Kết bạn</div>
+	</nav>
+
+
+</body>
+
+</html>

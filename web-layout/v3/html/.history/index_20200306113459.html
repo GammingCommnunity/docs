@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- title -->
+	<title>Gaming Community</title>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+	<!-- fontawesome -->
+	<link href="css/fontawesome.css" rel="stylesheet">
+	<link href="css/brands.css" rel="stylesheet">
+	<link href="css/solid.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- bootstrap -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap/bootstrap.popper.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<!-- define -->
+	<style>
+		:root {
+			/* background color */
+			--bg9: #263238;
+			--bg8: #37474F;
+			--bg7: #455A64;
+			--bg6: #546E7A;
+			--bg5: #607D8B;
+			--bg4: #78909C;
+			--bg3: #90A4AE;
+			--bg2: #B0BEC5;
+			--bg1: #CFD8DC;
+			/* text color */
+			--primary-text: white;
+			--secondary-text: #C8C8C8;
+			/* shadow */
+			--shd: 3px 5px 9px rgba(0, 0, 0, .2);
+			--shd-lg: 3px 5px 18px rgba(0, 0, 0, .2);
+			--shd-highlight: 3px 5px 9px rgba(0, 0, 0, .2), inset 1px 3px 9px black;
+			/* text size */
+			--text-size-sm: 12px;
+			--text-size-lg: 17px;
+			/* highlight */
+			--highlight: rgb(102, 243, 212);
+			--border-highlight: 4px solid var(--highlight);
+		}
+	</style>
+
+	<!-- global style -->
+	<style>
+		html {
+			margin: 0;
+			padding: 0;
+		}
+
+		html * {
+			font-size: 15px;
+			color: var(--primary-text);
+		}
+
+		/* ::-webkit-scrollbar {
+			width: 3px;
+			height: 3px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: rgb(9, 81, 71);
+			border-radius: 999px;
+		}
+
+		::placeholder {
+			color: rgb(13, 190, 150);
+			font-size: 12px;
+		} */
+
+		pre {
+			white-space: pre-line;
+			word-break: break-word;
+		}
+
+
+
+
+
+
+		.img {
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.nowrap {
+			white-space: nowrap;
+		}
+
+		.wrap {
+			white-space: pre-line;
+			word-break: break-word;
+		}
+
+		.logo {
+			width: 40px;
+			height: 40px;
+		}
+
+		/* component */
+		.component {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.component-head {
+			display: flex;
+			align-items: center;
+			margin-bottom: 30px;
+		}
+
+		.component-head * {
+			color: var(--secondary-text);
+		}
+
+		.component-head label {
+			margin-right: 10px;
+			font-weight: bold;
+			font-size: var(--text-size-lg);
+			flex-grow: 1;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		.component .component-body {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			overflow: auto;
+		}
+
+		/* fix bootstrap */
+		p,
+		label {
+			margin: 0;
+		}
+
+		.dropdown-menu {
+			font-weight: bold;
+			background-color: var(--bg6);
+			box-shadow: var(--shd-lg);
+		}
+
+		.dropdown-menu * {
+			font-weight: bold;
+			transition: all .3s ease;
+			color: var(--primary-text);
+		}
+
+		.dropdown-menu .dropdown-item:hover {
+			color: var(--bg6);
+			border-left: 4px solid var(--highlight);
+		}
+	</style>
+
+	<!-- framework -->
+	<style>
+		header {
+			width: 100vw;
+			height: 60px;
+			padding-left: 10px;
+			padding-right: 10px;
+			position: fixed;
+			top: 0;
+			display: flex;
+			align-items: center;
+			background-color: var(--bg7);
+			box-shadow: var(--shd);
+		}
+
+		header .space {
+			flex-grow: 1;
+		}
+
+		header .button {
+			width: 40px;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 40px;
+			background-color: var(--bg3);
+			margin-left: 10px;
+			cursor: pointer;
+			color: black;
+		}
+
+		header .button * {
+			color: black;
+		}
+
+		.feedback-btn {
+			width: 200px !important;
+			font-weight: bold;
+		}
+
+		.main-container {
+			width: 100vw;
+			height: 100vh;
+			background-color: var(--bg9);
+			padding-top: 60px;
+			display: flex;
+			align-items: stretch;
+			justify-content: space-between;
+		}
+
+		.main-container article {
+			flex-grow: 1;
+			padding: 30px 10px 0 10px;
+			max-width: 1000px;
+			overflow: auto;
+		}
+
+		.main-container nav {
+			width: 300px;
+			padding: 30px 10px 0 10px;
+			color: var(--secondary-text);
+		}
+
+		/* joined-rooms-item */
+		.joined-rooms-item {
+			width: 100%;
+			display: flex;
+			margin-bottom: 15px;
+		}
+
+		.joined-rooms-item .img {
+			width: 64px;
+			height: 64px;
+			border-radius: 10px;
+		}
+
+		.joined-rooms-item * {
+			font-weight: bold;
+		}
+
+		.joined-rooms-item .info {
+			height: 64px;
+			padding-left: 10px;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+		}
+
+		.joined-rooms-item .info * {
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		/* active */
+		.joined-rooms-item.active .img {
+			border: var(--border-highlight);
+			box-shadow: var(--shd-highlight);
+		}
+
+		/* friends-item */
+		.friends-item {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			margin-bottom: 15px;
+		}
+
+		.friends-item .img {
+			width: 36px;
+			height: 36px;
+			border-radius: 36px;
+		}
+
+		.friends-item * {
+			font-weight: bold;
+		}
+
+		.friends-item .name {
+			padding-left: 10px;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+	</style>
+
+	<!-- game channel -->
+	<style>
+		.game-channels-list {
+			font-weight: bold;
+		}
+
+		.game-channels {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+
+		.game-channels-head {
+			margin-bottom: 40px;
+			display: flex;
+			align-items: center;
+		}
+
+		.game-channels-head>label:first-child {
+			color: var(--secondary-text);
+			font-size: var(--text-size-lg);
+			font-weight: bold;
+			padding-right: 10px;
+		}
+
+		.game-channels-head .game-channels-list {
+			flex-grow: 1;
+		}
+
+		.game-channels-body {
+			flex-grow: 1;
+			display: flex;
+			overflow: auto;
+		}
+
+		/* rooms */
+		.rooms {
+			width: 360px;
+			min-width: 360px;
+			height: 100%;
+		}
+
+		.rooms-item {
+			width: 100%;
+			height: 90px;
+			min-height: 90px;
+			border-radius: 10px;
+			overflow: hidden;
+			margin-bottom: 10px;
+		}
+
+		.rooms-item::after {
+			content: "";
+			background-color: rgba(0, 0, 0, .8);
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		/* global chats */
+		.global-chats {
+			flex-grow: 1;
+			height: 100%;
+			overflow: auto;
+		}
+
+		.global-chats-item {
+			width: 100%;
+			height: 90px;
+			min-height: 90px;
+			border-radius: 10px;
+			overflow: hidden;
+			margin-bottom: 10px;
+		}
+	</style>
+
+
+
+
+	<header>
+		<div class="logo img" style="background-image: url(img/logo.png)"></div>
+		<div class="space"></div>
+		<div class="button feedback-btn">Gửi phản hồi của bạn</div>
+		<div class="button">
+			<i class="fas fa-comment"></i>
+		</div>
+		<div class="button img" style="background-image: url(img/avatar.jpg)"></div>
+	</header>
+
+
+
+	<div class="main-container">
+
+
+
+
+
+
+		<!-- joined room -->
+		<nav class="component">
+			<div class="component-head">
+				<label>Phòng đã tham gia</label>
+				<div>
+					<i class="fas fa-bars"></i>
+				</div>
+			</div>
+			<div class="component-body">
+
+				<div class="joined-rooms-item active">
+					<div class="img" style="background-image: url(img/14.jpg)"></div>
+					<div class="info">
+						<p>Battlefield 1</p>
+						<p>#162</p>
+					</div>
+				</div>
+
+				<div class="joined-rooms-item">
+					<div class="img" style="background-image: url(img/10.jpg)"></div>
+					<div class="info">
+						<p>Minecraft</p>
+						<p>#113</p>
+					</div>
+				</div>
+
+				<div class="joined-rooms-item">
+					<div class="img" style="background-image: url(img/9.jpg)"></div>
+					<div class="info">
+						<p>Left 4 Dead 2</p>
+						<p>#33</p>
+					</div>
+				</div>
+
+				<div class="joined-rooms-item">
+					<div class="img" style="background-image: url(img/13.jpg)"></div>
+					<div class="info">
+						<p>War of Tanks</p>
+						<p>#55</p>
+					</div>
+				</div>
+
+				<div class="joined-rooms-item">
+					<div class="img" style="background-image: url(img/12.jpg)"></div>
+					<div class="info">
+						<p>Start Craft</p>
+						<p>#123</p>
+					</div>
+				</div>
+
+				<div class="joined-rooms-item">
+					<div class="img" style="background-image: url(img/16.jpg)"></div>
+					<div class="info">
+						<p>Battlefield 4</p>
+						<p>#5</p>
+					</div>
+				</div>
+
+				<div class="joined-rooms-item">
+					<div class="img" style="background-image: url(img/11.jpg)"></div>
+					<div class="info">
+						<p>Titanfall 2</p>
+						<p>#192</p>
+					</div>
+				</div>
+
+
+			</div>
+		</nav>
+
+		<!-- game channel -->
+		<article>
+			<div class="game-channels">
+				<div class="game-channels-head">
+					<label>Kênh game hiện tại:</label>
+					<div class="game-channels-list dropdown">
+						<label class="dropdown-toggle" id="" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+							Left 4 Dead 2
+						</label>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#">GTA 5</a>
+							<a class="dropdown-item" href="#">Minecraft</a>
+							<a class="dropdown-item" href="#">Left 4 Dead 2</a>
+							<a class="dropdown-item" href="#">War Frame</a>
+							<a class="dropdown-item" href="#">Titanfall 2</a>
+							<a class="dropdown-item" href="#">Start Craft</a>
+							<a class="dropdown-item" href="#">HearthStone</a>
+						</div>
+					</div>
+				</div>
+				<div class="game-channels-body">
+
+					<!-- rooms -->
+					<div class="rooms component">
+						<div class="component-head">
+							<label>Danh sách phòng</label>
+							<div>
+								<i class="fas fa-bars"></i>
+							</div>
+						</div>
+						<div class="component-body">
+
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="rooms-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+
+						</div>
+					</div>
+
+					<!-- global chats -->
+					<div class="global-chats">
+						<div class="component-head">
+							<label>Kênh chat chung</label>
+							<div>
+								<i class="fas fa-bars"></i>
+							</div>
+						</div>
+						<div class="component-body">
+
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+							<div class="global-chats-item" style="background-image: url(img/100.jpg)">
+
+							</div>
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</article>
+
+		<!-- friends -->
+		<nav class="component">
+			<div class="component-head">
+				<label>Bạn bè</label>
+				<div>
+					<i class="fas fa-bars"></i>
+				</div>
+			</div>
+			<div class="component-body">
+
+				<div class="friends-item">
+					<div class="img" style="background-image: url(img/100.jpg)"></div>
+					<p class="name">Phong Nguyen</p>
+				</div>
+
+				<div class="friends-item">
+					<div class="img" style="background-image: url(img/101.jpg)"></div>
+					<p class="name">Lĩnh Nguyễn</p>
+				</div>
+
+				<div class="friends-item">
+					<div class="img" style="background-image: url(img/102.jpg)"></div>
+					<p class="name">Chương Đỗ</p>
+				</div>
+
+				<div class="friends-item">
+					<div class="img" style="background-image: url(img/103.jpg)"></div>
+					<p class="name">Sanh Trần</p>
+				</div>
+
+				<div class="friends-item">
+					<div class="img" style="background-image: url(img/104.jpg)"></div>
+					<p class="name">Nhân Nguyễn</p>
+				</div>
+
+				<div class="friends-item">
+					<div class="img" style="background-image: url(img/105.jpg)"></div>
+					<p class="name">Huy Mai</p>
+				</div>
+
+
+			</div>
+		</nav>
+
+
+
+
+
+
+	</div>
+
+
+
+
+</body>
+
+</html>
