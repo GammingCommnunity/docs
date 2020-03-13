@@ -580,7 +580,7 @@
 			width: 100%;
 			height: 100%;
 
-			background-color: rgba(0, 0, 0, .7);
+			background-color: rgba(0, 0, 0, .75);
 
 			transition: all .4s ease;
 		}
@@ -612,7 +612,6 @@
 			position: relative;
 
 			width: 100vw;
-			min-width: 800px;
 			height: 100vh;
 
 			background-color: var(--bg9);
@@ -627,7 +626,6 @@
 			left: 0;
 
 			width: 100%;
-			min-width: 800px;
 			height: 60px;
 
 			display: flex;
@@ -714,18 +712,6 @@
 			padding: 60px 300px 0 300px;
 		}
 
-		@media only screen and (max-width: 1400px) {
-
-			nav {
-				width: 260px;
-			}
-
-			article {
-				padding: 60px 260px 0 260px;
-			}
-
-		}
-
 		@media only screen and (max-width: 1300px) {
 
 			nav {
@@ -744,16 +730,8 @@
 				width: 130px;
 			}
 
-			nav.friends {
-				width: 110px;
-			}
-
-			nav>.head label {
-				display: none;
-			}
-
 			article {
-				padding: 60px 110px 0 130px;
+				padding: 60px 130px 0 130px;
 			}
 
 		}
@@ -766,18 +744,6 @@
 
 			article {
 				padding: 60px 0 0 130px;
-			}
-
-		}
-
-		@media only screen and (max-width: 800px) {
-
-			nav {
-				display: none;
-			}
-
-			article {
-				padding: 60px 0 0 0;
 			}
 
 		}
@@ -918,24 +884,6 @@
 			flex-direction: column;
 		}
 
-		@media only screen and (max-width: 1400px) {
-
-			.global-chats {
-				width: 350px;
-				min-width: 350px;
-			}
-
-		}
-
-		@media only screen and (max-width: 1300px) {
-
-			.global-chats {
-				width: 320px;
-				min-width: 320px;
-			}
-
-		}
-
 		.global-chats-body {
 			flex-grow: 1;
 
@@ -1054,7 +1002,7 @@
 			width: 100%;
 
 			padding: 10px;
-			margin-bottom: 15px;
+			margin-bottom: 10px;
 
 			border-left: 4px solid var(--secondary-text);
 			cursor: pointer;
@@ -1196,7 +1144,7 @@
 
 		</div>
 
-		<div class="btn btn-content m-0 mt-3">Tìm phòng</div>
+		<div class="btn btn-content m-0 mt-3">Tìm phòng nhanh</div>
 	</nav>
 
 	<!-- friends -->

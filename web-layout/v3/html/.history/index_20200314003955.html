@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- afvicon -->
 	<link rel="icon" type='image/x-icon' href='favicon.ico' />
 	<!-- title -->
@@ -37,7 +37,7 @@
 			--secondary-text: #B2B4B9;
 			/* shadow */
 			--shd: 3px 6px 8px rgba(0, 0, 0, .55);
-			--shd-inset: inset 3px 6px 4px rgba(0, 0, 0, .85);
+			--shd-inset: inset 3px 6px 4px rgba(0, 0, 0, .8);
 			--shd-lg: 8px 16px 18px rgba(0, 0, 0, .45);
 			--shd-sm: 1px 2px 5px rgba(0, 0, 0, .8);
 			--shd-highlight: 3px 6px 8px rgba(0, 0, 0, .45), inset 3px 6px 8px rgba(0, 0, 0, .9);
@@ -425,6 +425,7 @@
 		}
 
 		.hover:hover {
+			padding: 8px 10px;
 			border-radius: var(--rounded);
 			border-left: 4px solid var(--highlight);
 			background-color: var(--bg8);
@@ -520,7 +521,7 @@
 			height: 100%;
 		}
 
-		.background:after {
+		.background::after {
 			content: "";
 
 			position: absolute;
@@ -561,16 +562,16 @@
 		}
 
 		/* black layer */
-		.black-layer {
+		.layer-black {
 			position: relative;
 			z-index: 1;
 		}
 
-		.black-layer * {
+		.layer-black * {
 			z-index: inherit;
 		}
 
-		.black-layer:after {
+		.layer-black::after {
 			content: "";
 
 			position: absolute;
@@ -580,29 +581,7 @@
 			width: 100%;
 			height: 100%;
 
-			background-color: rgba(0, 0, 0, .7);
-
-			transition: all .4s ease;
-		}
-
-		/* tooltip */
-		*[data-toggle="tooltip"] {
-			position: relative;
-		}
-
-		*[data-toggle="tooltip"]:hover:after {
-			content: attr(tooltip-content);
-
-			position: absolute;
-			top: calc(100% + 10px);
-
-			padding: 10px;
-
-			border-radius: var(--rounded-sm);
-			background-color: var(--bg6);
-			font-weight: bold;
-			white-space: nowrap;
-			box-shadow: var(--shd-lg);
+			background-color: rgba(0, 0, 0, .75);
 		}
 	</style>
 
@@ -612,7 +591,6 @@
 			position: relative;
 
 			width: 100vw;
-			min-width: 800px;
 			height: 100vh;
 
 			background-color: var(--bg9);
@@ -627,7 +605,6 @@
 			left: 0;
 
 			width: 100%;
-			min-width: 800px;
 			height: 60px;
 
 			display: flex;
@@ -713,74 +690,6 @@
 
 			padding: 60px 300px 0 300px;
 		}
-
-		@media only screen and (max-width: 1400px) {
-
-			nav {
-				width: 260px;
-			}
-
-			article {
-				padding: 60px 260px 0 260px;
-			}
-
-		}
-
-		@media only screen and (max-width: 1300px) {
-
-			nav {
-				width: 210px;
-			}
-
-			article {
-				padding: 60px 210px 0 210px;
-			}
-
-		}
-
-		@media only screen and (max-width: 1100px) {
-
-			nav {
-				width: 130px;
-			}
-
-			nav.friends {
-				width: 110px;
-			}
-
-			nav>.head label {
-				display: none;
-			}
-
-			article {
-				padding: 60px 110px 0 130px;
-			}
-
-		}
-
-		@media only screen and (max-width: 900px) {
-
-			nav.friends {
-				display: none;
-			}
-
-			article {
-				padding: 60px 0 0 130px;
-			}
-
-		}
-
-		@media only screen and (max-width: 800px) {
-
-			nav {
-				display: none;
-			}
-
-			article {
-				padding: 60px 0 0 0;
-			}
-
-		}
 	</style>
 
 	<!-- fragments main styles -->
@@ -795,7 +704,7 @@
 
 			width: 100%;
 
-			padding: 10px;
+			margin-bottom: 15px;
 
 			cursor: pointer;
 			font-weight: bold;
@@ -803,17 +712,11 @@
 
 		.joined-rooms-items .img {
 			width: 64px;
-			min-width: 64px;
 			height: 64px;
 
 			border-radius: var(--rounded);
 
 			transition: all .4s ease;
-		}
-
-		.joined-rooms-items:hover .img {
-			width: 84px;
-			min-width: 84px;
 		}
 
 		.joined-rooms-items .info {
@@ -828,8 +731,6 @@
 			height: 64px;
 
 			padding-left: 10px;
-
-			white-space: nowrap;
 		}
 
 		.joined-rooms-items .info * {
@@ -839,7 +740,7 @@
 
 		/* friends */
 		nav.friends {
-			right: 0;
+			left: calc(100vw - 300px);
 		}
 
 		/* friends-items */
@@ -849,7 +750,7 @@
 
 			width: 100%;
 
-			padding: 10px;
+			margin-bottom: 15px;
 
 			cursor: pointer;
 			font-weight: bold;
@@ -857,7 +758,6 @@
 
 		.friends-items .img {
 			width: 36px;
-			min-width: 36px;
 			height: 36px;
 
 			border-radius: 36px;
@@ -918,24 +818,6 @@
 			flex-direction: column;
 		}
 
-		@media only screen and (max-width: 1400px) {
-
-			.global-chats {
-				width: 350px;
-				min-width: 350px;
-			}
-
-		}
-
-		@media only screen and (max-width: 1300px) {
-
-			.global-chats {
-				width: 320px;
-				min-width: 320px;
-			}
-
-		}
-
 		.global-chats-body {
 			flex-grow: 1;
 
@@ -985,7 +867,7 @@
 			line-height: 0;
 		}
 
-		.global-chats-items-body .name:after {
+		.global-chats-items-body .name::after {
 			content: ': ';
 		}
 
@@ -1054,21 +936,18 @@
 			width: 100%;
 
 			padding: 10px;
-			margin-bottom: 15px;
+			margin-bottom: 10px;
 
 			border-left: 4px solid var(--secondary-text);
 			cursor: pointer;
 			font-weight: bold;
 
-			transition: all .2s ease-out;
+			/* transition: all .2s ease-out; */
 		}
 
 		.rooms-items:hover {
+			border: 1px solid var(--highlight);
 			border-left: 8px solid var(--highlight);
-		}
-
-		.rooms-items:hover:after {
-			opacity: .5;
 		}
 
 		.rooms-items-name,
@@ -1102,10 +981,10 @@
 			</g>
 		</svg>
 		<div class="navs">
-			<div class="navs-items active" data-toggle="tooltip" tooltip-content="Trò chơi">
+			<div class="navs-items active" data-toggle="tooltip" data-placement="bottom" title="Trò chơi">
 				<i class="fas fa-gamepad fa-2x"></i>
 			</div>
-			<div class="navs-items" data-toggle="tooltip" tooltip-content="Mạng xã hội">
+			<div class="navs-items" data-toggle="tooltip" data-placement="bottom" title="Mạng xã hội">
 				<i class="fas fa-globe fa-2x"></i>
 			</div>
 		</div>
@@ -1129,7 +1008,7 @@
 
 		<div class="body">
 
-			<div class="joined-rooms-items hover">
+			<div class="joined-rooms-items hover active">
 				<div class="img" style="background-image: url(img/14.jpg)"></div>
 				<div class="info">
 					<p>Battlefield 1</p>
@@ -1185,18 +1064,10 @@
 				</div>
 			</div>
 
-			<div class="joined-rooms-items hover">
-				<div class="img" style="background-image: url(img/11.jpg)"></div>
-				<div class="info">
-					<p>TitanfallTitanfallTitanfallTitanfall
-						HuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuy</p>
-					<p>#192</p>
-				</div>
-			</div>
 
 		</div>
 
-		<div class="btn btn-content m-0 mt-3">Tìm phòng</div>
+		<div class="btn btn-content m-0 mt-3">Tìm phòng nhanh</div>
 	</nav>
 
 	<!-- friends -->
@@ -1240,11 +1111,6 @@
 				<p class="name">Huy Mai</p>
 			</div>
 
-			<div class="friends-items hover">
-				<div class="img" style="background-image: url(img/101.jpg)"></div>
-				<p class="name">HuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuy
-					HuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuyHuy</p>
-			</div>
 
 		</div>
 
@@ -1280,7 +1146,7 @@
 					</div>
 					<div class="rooms-body">
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/1.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
@@ -1293,7 +1159,7 @@
 							</div>
 						</div>
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/2.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
@@ -1306,7 +1172,7 @@
 							</div>
 						</div>
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/5.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
@@ -1320,7 +1186,7 @@
 						</div>
 
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/9.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
@@ -1333,7 +1199,7 @@
 							</div>
 						</div>
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/9.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
@@ -1346,7 +1212,7 @@
 							</div>
 						</div>
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/9.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
@@ -1359,7 +1225,7 @@
 							</div>
 						</div>
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/9.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
@@ -1372,7 +1238,7 @@
 							</div>
 						</div>
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/9.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
@@ -1385,7 +1251,7 @@
 							</div>
 						</div>
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/9.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
@@ -1398,7 +1264,7 @@
 							</div>
 						</div>
 
-						<div class="rooms-items black-layer img" onclick="echo()"
+						<div class="rooms-items layer-black img" onclick="echo()"
 							style="background-image: url(img/9.jpg)">
 							<p class="rooms-items-name nowrap">Nào mình cùng lên xe buýt</p>
 							<p class="rooms-items-id nowrap">1</p>
