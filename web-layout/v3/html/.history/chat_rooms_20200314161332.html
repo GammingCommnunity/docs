@@ -416,7 +416,7 @@
 
 		.wrap {
 			white-space: pre-line;
-			word-wrap: break-word;
+			word-break: break-word;
 		}
 
 		/* hover */
@@ -1199,12 +1199,16 @@
 			overflow: hidden;
 
 			margin-left: 6px;
-			margin-right: 6px;
 
 			font-size: var(--text-size-sm);
 			font-weight: bold;
 			color: var(--secondary-text);
 			white-space: nowrap;
+		}
+
+		.messages.right .messages-name {
+			margin-left: 0;
+			margin-right: 6px;
 		}
 
 		.messages-options {
