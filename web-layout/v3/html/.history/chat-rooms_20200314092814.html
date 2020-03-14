@@ -22,6 +22,7 @@
 	<style>
 		:root {
 			/* background color */
+			--bg10: #06141A;
 			--bg9: #263238;
 			--bg8: #37474F;
 			--bg7: #455A64;
@@ -351,267 +352,252 @@
 			margin: 0;
 			padding: 0;
 		}
-	
+
 		body {
 			font-family: Roboto, Arial, sans-serif;
 			box-sizing: border-box;
 			font-size: 15px;
 			color: var(--primary-text);
-			line-height: 1.4;
 		}
-	
+
 		body * {
 			box-sizing: inherit;
 			font-size: inherit;
 			color: inherit;
 		}
-	
+
 		::-webkit-scrollbar {
 			width: 7px;
 			height: 7px;
 			background-color: var(--bg8);
 			border-radius: 7px;
 		}
-	
+
 		::-webkit-scrollbar-thumb {
 			background-color: var(--bg6);
 			border-radius: 7px;
 		}
-	
+
 		textarea::placeholder,
 		input::placeholder {
 			color: var(--secondary-text);
 		}
-	
+
 		a {
 			transition: all .4s ease;
 		}
-	
+
 		a:hover {
 			color: var(--highlight);
 			text-decoration: underline var(--bg4);
 		}
-	
+
 		hr {
-			border: none;
-			border-bottom: 1px solid var(--bg8);
+			border-top: 1px solid var(--bg8);
+			width: 100%;
 		}
-	
+
 		select {
 			background-color: transparent;
 			border: none;
 		}
-	
-	
+
+
 		.img {
 			display: block;
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
 		}
-	
+
 		.nowrap {
 			white-space: nowrap;
 		}
-	
+
 		.wrap {
 			white-space: pre-line;
 			word-break: break-word;
 		}
-	
+
 		/* hover */
 		.hover {
 			transition: all .2s ease;
 		}
-	
+
 		.hover:hover {
 			border-radius: var(--rounded);
 			border-left: 4px solid var(--highlight);
 			background-color: var(--bg8);
 		}
-	
+
 		/* btn */
 		.btn {
-			width: 30px;
-			min-width: 30px;
-			height: 30px;
-			min-height: 30px;
-	
-			display: flex;
-			justify-content: center;
-			align-items: center;
-	
-			background-color: var(--bg8);
-			cursor: pointer;
-			font-weight: bold;
-			border-radius: var(--rounded-sm);
-	
-			margin-left: 5px;
-			margin-right: 5px;
-	
-			transition: all .2s ease;
-		}
-	
-		.btn-content {
-			width: unset;
-			min-width: unset;
-	
-			padding: 0 10px;
-		}
-	
-		.btn-sm {
-			width: 24px;
-			min-width: 24px;
-			height: 24px;
-			min-height: 24px;
-		}
-	
-		.btn-sm.btn-content {
-			width: unset;
-			min-width: unset;
-	
-			padding: 0 8px;
-		}
-	
-		.btn-lg {
 			width: 40px;
 			min-width: 40px;
 			height: 40px;
 			min-height: 40px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			background-color: var(--bg8);
+			cursor: pointer;
+			font-weight: bold;
+			border-radius: var(--rounded-sm);
+
+			margin-left: 5px;
+			margin-right: 5px;
+
+			transition: all .2s ease;
 		}
-	
-		.btn-lg.btn-content {
+
+		.btn-content {
 			width: unset;
 			min-width: unset;
-	
+
 			padding: 0 15px;
 		}
-	
+
+		.btn-sm {
+			width: 30px;
+			min-width: 30px;
+			height: 30px;
+			min-height: 30px;
+		}
+
+		.btn-sm.btn-content {
+			width: unset;
+			min-width: unset;
+
+			padding: 0 10px;
+		}
+
 		.btn:hover {
 			background-color: var(--bg7);
 		}
-	
+
 		.btn-light {
 			background-color: var(--bg7) !important;
 		}
-	
+
 		.btn-light:hover {
 			background-color: var(--bg6) !important;
 		}
-	
+
 		/* rows */
 		.row {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
-	
+
 		/* border radius */
 		.rounded-sm {
 			border-radius: var(--rounded-sm);
 		}
-	
+
 		.rounded {
 			border-radius: var(--rounded);
 		}
-	
+
 		.rounded-lg {
 			border-radius: var(--rounded-lg);
 		}
-	
+
 		.rounded-circle {
 			border-radius: var(--rounded-circle);
 		}
-	
+
 		/* background */
 		.background {
 			position: absolute;
 			z-index: -1;
 			top: 0;
 			left: 0;
-	
+
 			width: 100%;
 			height: 100%;
 		}
-	
+
 		.background:after {
 			content: "";
-	
+
 			position: absolute;
 			top: 0;
 			left: 0;
-	
+
 			width: 100%;
 			height: 100%;
-	
+
 			background-color: rgba(0, 0, 0, .9);
 		}
-	
+
 		/* head */
 		.head {
 			display: flex;
 			align-items: center;
-	
+
 			color: var(--secondary-text);
-	
+
 			margin-bottom: 20px;
 		}
-	
+
 		.head label {
 			flex-grow: 1;
 			overflow: hidden;
-	
+
 			margin-right: 10px;
-	
+
 			font-weight: bold;
 			font-size: var(--text-size-lg);
 			white-space: nowrap;
 		}
-	
+
 		/* svg background */
 		.bg-svg {
 			background-color: var(--bg9);
 			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='99' height='99' viewBox='0 0 120 120'%3E%3Cpolygon fill='%2337474f' fill-opacity='0.14' points='120 120 60 120 90 90 120 60 120 0 120 0 60 60 0 0 0 60 30 90 60 120 120 120 '/%3E%3C/svg%3E");
 		}
-	
+
 		/* black layer */
 		.black-layer {
 			position: relative;
 			z-index: 1;
 		}
-	
+
 		.black-layer * {
 			z-index: inherit;
 		}
-	
+
 		.black-layer:after {
 			content: "";
-	
+
 			position: absolute;
 			top: 0;
 			left: 0;
-	
+
 			width: 100%;
 			height: 100%;
-	
+
 			background-color: rgba(0, 0, 0, .7);
-	
+
 			transition: all .2s ease;
 		}
-	
+
 		/* tooltip */
 		*[data-toggle="tooltip"] {
 			position: relative;
 		}
-	
+
 		*[data-toggle="tooltip"]:hover:after {
 			content: attr(tooltip-content);
-	
+
 			position: absolute;
 			top: calc(100% + 10px);
-	
+
 			padding: 10px;
-	
+
 			border-radius: var(--rounded-sm);
 			background-color: var(--bg6);
 			font-weight: bold;
@@ -884,7 +870,6 @@
 		}
 	</style>
 
-	
 
 	<header class="bg-svg">
 		<svg width="40px" height="40px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -905,10 +890,10 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="btn btn-lg btn-light btn-content rounded-circle">Gửi phản hồi của bạn</div>
-			<i class="fas fa-comment btn btn-lg btn-light rounded-circle"></i>
-			<i class="fas fa-bell btn btn-lg btn-light rounded-circle"></i>
-			<div class="avatar btn btn-lg btn-light img rounded-circle" style="background-image: url(img/avatar.jpg)"></div>
+			<div class="btn btn-light btn-content rounded-circle">Gửi phản hồi của bạn</div>
+			<i class="fas fa-comment btn btn-light rounded-circle"></i>
+			<i class="fas fa-bell btn btn-light rounded-circle"></i>
+			<div class="avatar btn btn-light img rounded-circle" style="background-image: url(img/avatar.jpg)"></div>
 		</div>
 	</header>
 
@@ -917,8 +902,8 @@
 		<div class="head">
 			<label>Phòng đã tham gia</label>
 			<div class="row">
-				<i class="fas fa-search mr-1 btn rounded-circle"></i>
-				<i class="fas fa-ellipsis-h btn rounded-circle mr-0"></i>
+				<i class="fas fa-search mr-1 btn btn-sm rounded-circle"></i>
+				<i class="fas fa-ellipsis-h btn btn-sm rounded-circle mr-0"></i>
 			</div>
 		</div>
 
@@ -991,7 +976,7 @@
 
 		</div>
 
-		<div class="btn btn-lg btn-content m-0 mt-3">Tìm phòng</div>
+		<div class="btn btn-content m-0 mt-3">Tìm phòng</div>
 	</nav>
 
 	<!-- friends -->
@@ -999,8 +984,8 @@
 		<div class="head">
 			<label>Bạn bè</label>
 			<div class="row">
-				<i class="fas fa-search mr-1 btn rounded-circle"></i>
-				<i class="fas fa-ellipsis-h btn rounded-circle mr-0"></i>
+				<i class="fas fa-search mr-1 btn btn-sm rounded-circle"></i>
+				<i class="fas fa-ellipsis-h btn btn-sm rounded-circle mr-0"></i>
 			</div>
 		</div>
 		<div class="body">
@@ -1043,420 +1028,31 @@
 
 		</div>
 
-		<div class="btn btn-lg btn-content m-0 mt-3">Kết bạn</div>
+		<div class="btn btn-content m-0 mt-3">Kết bạn</div>
 	</nav>
 
-	<!-- game channels styles -->
+	<!-- chat rooms -->
 	<style>
-		.game-channels {
+		.chat-rooms{
 			position: relative;
-	
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-	
+
 			width: 100%;
 			height: 100%;
-	
-			padding: 40px;
-	
-			box-shadow: var(--shd-inset);
-		}
-	
-		.game-channels-head {
-			margin-bottom: 22px;
-	
-			font-size: var(--text-size-lg);
-			color: var(--secondary-text);
-			font-weight: bold;
-		}
-	
-		.game-channels-head select {
-			font-weight: inherit;
-		}
-	
-		.game-channels-body {
-			flex-grow: 1;
-			display: flex;
-	
-			overflow: auto;
-	
-			width: 100%;
-		}
-	
-		/* global chats */
-		.global-chats {
-			width: 400px;
-			min-width: 400px;
-			height: 100%;
-	
+
 			display: flex;
 			flex-direction: column;
-		}
-	
-		@media only screen and (max-width: 1400px) {
-	
-			.global-chats {
-				width: 350px;
-				min-width: 350px;
-			}
-	
-		}
-	
-		@media only screen and (max-width: 1300px) {
-	
-			.global-chats {
-				width: 320px;
-				min-width: 320px;
-			}
-	
-		}
-	
-		.global-chats-body {
-			flex-grow: 1;
-	
-			overflow: auto;
-	
-			max-height: 550px;
-	
-			padding-right: 30px;
-		}
-	
-		.global-chats-items {
-			width: 100%;
-			margin-bottom: 15px;
-			display: flex;
-			align-items: flex-start;
-		}
-	
-		.global-chats-items .avatar {
-			width: 24px;
-			min-width: 24px;
-			height: 24px;
-	
-			border-radius: 24px;
-			margin-top: 3px;
-			margin-right: 8px;
-		}
-	
-		.global-chats-items-body {
-			flex-grow: 1;
-			overflow: hidden;
-		}
-	
-		.global-chats-items-body .name {
-			display: inline-block;
-	
-			overflow: hidden;
-	
-			max-width: 80%;
-	
-			padding-bottom: 5px;
-			padding-top: 11px;
-	
-			font-weight: bold;
-			color: var(--secondary-text) !important;
-			white-space: nowrap;
-			font-size: var(--text-size-sm);
-			line-height: 0;
-		}
-	
-		.global-chats-items-body .name:after {
-			content: ': ';
-		}
-	
-		.global-chats-items-body .content {
-			display: inline;
-		}
-	
-		.messages-box {
-			display: flex;
-			align-items: flex-end;
-			margin-top: 15px;
-		}
-	
-		.messages-box .avatar {
-			width: 24px;
-			min-width: 24px;
-			height: 24px;
-	
-			margin-right: 10px;
-	
-			border-radius: 24px;
-		}
-	
-		.messages-box input {
-			flex-grow: 1;
-	
-			min-width: 0;
-	
-			padding: 7px 10px;
-	
-			border-radius: var(--rounded-sm);
-			background-color: var(--bg8);
-			border: none;
-			resize: none;
-		}
-	
-		/* rooms */
-		.rooms {
-			flex-grow: 1;
-			display: flex;
-			flex-direction: column;
-	
-			overflow: auto;
-	
-			height: 100%;
-	
-			margin-right: 40px;
-		}
-	
-		.rooms-body {
-			flex-grow: 1;
-			display: flex;
-			flex-direction: column;
-	
-			width: 100%;
-	
-			padding-right: 30px;
-	
-			overflow: auto;
-		}
-	
-		.rooms-items {
-			display: flex;
-			flex-direction: column;
-	
-			width: 100%;
-	
-			padding: 10px;
-			margin-bottom: 15px;
-	
-			border-left: 4px solid var(--secondary-text);
-			cursor: pointer;
-			font-weight: bold;
-	
-			transition: all .2s ease-out;
-		}
-	
-		.rooms-items:hover {
-			border-left: 8px solid var(--highlight);
-		}
-	
-		.rooms-items:hover:after {
-			opacity: .5;
-		}
-	
-		.rooms-items-name,
-		.rooms-items-id,
-		.rooms-items-detail-info {
-			width: 100%;
-			overflow: hidden;
-			white-space: nowrap;
-		}
-	
-		.rooms-items-id::before {
-			content: "#";
-		}
-	
-		.rooms-items-detail-info {
-			padding-top: 10px;
-		}
-	
-		.rooms-items-detail-info * {
-			display: inline;
 		}
 	</style>
 
 	<article>
-		<div class="game-channels">
+		<div class="chat-rooms">
 			<div class="background img" style="background-image: url(img/9.jpg)"></div>
 
-			<div class="game-channels-head">
-				<label for="game-channels-list">Kênh game hiện tại:</label>
-
-				<select id="game-channels-list">
-					<option value="saab">HearthStone</option>
-					<option value="volvo">GTA 5</option>
-					<option value="saab">Minecraft</option>
-					<option value="mercedes">Left 4 Dead 2</option>
-					<option value="audi">Titanfall 2</option>
-				</select>
+			<div class="chat-rooms-head">
+				
 			</div>
 
-			<div class="game-channels-body">
-
-				<!-- rooms -->
-				<div class="rooms">
-					<div class="head">
-						<label>Danh sách phòng chat</label>
-						<div class="row">
-							<i class="fas fa-search mr-1 btn rounded-circle"></i>
-							<i class="fas fa-ellipsis-h btn rounded-circle mr-0"></i>
-						</div>
-					</div>
-					<div class="rooms-body">
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/1.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/2.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/5.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/9.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/9.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/9.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/9.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/9.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/9.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-						<div class="rooms-items black-layer img" onclick="echo()"
-							style="background-image: url(img/9.jpg)">
-							<p class="rooms-items-name">Nào mình cùng lên xe buýt</p>
-							<p class="rooms-items-id">1</p>
-							<div class="rooms-items-detail-info">
-								<i class="fas fa-globe-americas pr-2"></i>
-								<div class="member-num">
-									2/3
-									<i class="fas fa-users"></i>
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-
-					<div class="btn btn-lg btn-content m-0 mt-3">Tạo phòng</div>
-				</div>
-
-				<!-- global chats -->
-				<div class="global-chats">
-					<div class="head">
-						<label>Kênh chat chung</label>
-						<div class="row">
-							<i class="fas fa-search mr-1 btn rounded-circle"></i>
-							<i class="fas fa-ellipsis-h btn rounded-circle mr-0"></i>
-						</div>
-					</div>
-					<div class="global-chats-body">
-
-						<!-- <div class="global-chats-items"></div> -->
-
-					</div>
-					<div class="messages-box">
-						<div class="avatar img" style="background-image: url(img/avatar.jpg)"></div>
-						<input contenteditable class="messages-box-content" placeholder="Viết gì đó..."
-							onkeyup="updateMessagesBoxLength()" onkeydown="send(event)">
-						<p class="messages-box-length ml-2">0/100</p>
-						<i class="far fa-smile pl-2"></i>
-					</div>
-				</div>
-
+			<div class="chat-rooms-body">
 
 			</div>
 		</div>
