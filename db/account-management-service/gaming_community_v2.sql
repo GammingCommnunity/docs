@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 17, 2020 at 10:36 AM
+-- Generation Time: Mar 20, 2020 at 11:43 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.14
 
@@ -39,7 +39,6 @@ CREATE TABLE `account` (
   `phone` varchar(15) CHARACTER SET ascii COLLATE ascii_bin DEFAULT NULL,
   `role` tinyint(4) NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1,
-  `account_setting_id` bigint(20) UNSIGNED NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -48,23 +47,25 @@ CREATE TABLE `account` (
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`id`, `name`, `describe`, `avatar_url`, `birthmonth`, `birthyear`, `email`, `phone`, `role`, `status`, `account_setting_id`, `updated_at`, `created_at`) VALUES
-(1, 'Đây là tên của HOANG', 'main', NULL, NULL, NULL, NULL, NULL, 2, 1, 1, '2020-02-08 08:30:17', '2019-11-27 08:56:01'),
-(2, 'aa', 'stranger private', NULL, NULL, NULL, NULL, NULL, 2, 1, 1, '2020-01-28 07:12:18', '2019-11-27 08:56:01'),
-(3, 'Huỳnh Bá Cao Trí', 'friend private', NULL, NULL, NULL, NULL, NULL, 2, 1, 1, '2020-01-28 07:12:18', '2019-11-27 08:56:01'),
-(6, 'Tôi là một người nghệ sĩ', 'friend friend', NULL, NULL, NULL, NULL, NULL, 1, 1, 1, '2020-01-28 07:12:18', '2019-12-16 08:48:26'),
-(7, 'God', 'blocked', NULL, NULL, NULL, NULL, NULL, 3, 1, 1, '2020-01-28 07:12:18', '2019-12-16 08:50:05'),
-(42, 'Hoàng là một con heo bự CHẢNG', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 27, '2020-02-25 15:04:15', '2020-02-25 15:04:15'),
-(43, 'Kalu', 'A person like gaming', 'http://res.cloudinary.com/mattstacey/image/upload/v1584066257/avatar/43/asfavntlozvgwvch3z5f.jpg', NULL, NULL, NULL, NULL, 1, 1, 28, '2020-03-13 02:24:20', '2020-02-26 01:50:23'),
-(44, 'Baka ', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 29, '2020-02-26 02:00:13', '2020-02-26 02:00:13'),
-(45, 'Baka ', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 30, '2020-03-01 07:19:32', '2020-03-01 07:19:32'),
-(46, 'Baka ', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 31, '2020-03-02 01:24:47', '2020-03-02 01:24:47'),
-(47, 'Baka ', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 32, '2020-03-02 01:27:22', '2020-03-02 01:27:22'),
-(48, 'Baka ', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 33, '2020-03-02 01:30:12', '2020-03-02 01:30:12'),
-(49, 'aaa', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 34, '2020-03-04 15:08:44', '2020-03-04 15:08:44'),
-(50, 'Ronan123', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 35, '2020-03-06 07:41:06', '2020-03-06 07:41:06'),
-(51, 'Super Dangerous', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 36, '2020-03-06 07:44:01', '2020-03-06 07:44:01'),
-(52, 'Super Dangerous', '', NULL, NULL, NULL, NULL, NULL, 1, 1, 37, '2020-03-06 07:44:16', '2020-03-06 07:44:16');
+INSERT INTO `account` (`id`, `name`, `describe`, `avatar_url`, `birthmonth`, `birthyear`, `email`, `phone`, `role`, `status`, `updated_at`, `created_at`) VALUES
+(1, 'Đây là tên của HOANG', 'main', 'c:/windows', NULL, NULL, 'garudawisatajaya@indo.net.id', NULL, 2, 1, '2020-03-18 01:45:26', '2019-11-27 08:56:01'),
+(2, 'aa', 'stranger private', NULL, NULL, NULL, 'tiena_asfary@yahoo.co.id', NULL, 2, 1, '2020-03-18 01:45:26', '2019-11-27 08:56:01'),
+(3, 'GiangVan', 'describe', 'https://giangvan.com', NULL, '1112', 'email', '11111111111', 2, 1, '2020-03-18 03:39:55', '2019-11-27 08:56:01'),
+(6, 'Tôi là một người nghệ sĩ', 'friend friend', NULL, NULL, NULL, 'imz1991@yahoo.com', NULL, 1, 1, '2020-03-18 01:45:26', '2019-12-16 08:48:26'),
+(7, 'God', 'blocked', NULL, NULL, NULL, 'centralreservation@ramayanahotel.com', NULL, 3, 1, '2020-03-18 01:45:26', '2019-12-16 08:50:05'),
+(42, 'Hoàng là một con heo bự CHẢNG', '', NULL, NULL, NULL, 'sm@ramayanahotel.com', NULL, 1, 1, '2020-03-18 01:45:26', '2020-02-25 15:04:15'),
+(43, 'Kalu', 'A person like gaming', 'http://res.cloudinary.com/mattstacey/image/upload/v1584066257/avatar/43/asfavntlozvgwvch3z5f.jpg', NULL, NULL, 'indahsuluh2002@yahoo.com.sg', NULL, 1, 1, '2020-03-18 01:45:26', '2020-02-26 01:50:23'),
+(44, 'Baka ', '', NULL, NULL, NULL, 'kf034@indosat.net.id', NULL, 1, 1, '2020-03-18 01:45:26', '2020-02-26 02:00:13'),
+(45, 'Baka ', '', NULL, NULL, NULL, 'adhidharma@denpasar.wasantara.net.id', NULL, 1, 1, '2020-03-18 01:45:26', '2020-03-01 07:19:32'),
+(46, 'Baka ', '', NULL, NULL, NULL, 'dos@novotelbali.com', NULL, 1, 1, '2020-03-18 01:45:26', '2020-03-02 01:24:47'),
+(47, 'Baka ', '', NULL, NULL, NULL, 'expdepot@indosat.net.id', NULL, 1, 1, '2020-03-18 01:45:26', '2020-03-02 01:27:22'),
+(48, 'Baka ', '', NULL, NULL, NULL, 'dtedja@indosat.net.id', NULL, 1, 1, '2020-03-18 01:45:26', '2020-03-02 01:30:12'),
+(49, 'aaa', '', NULL, NULL, NULL, 'kf034@indosat.net.id', NULL, 1, 1, '2020-03-18 01:45:26', '2020-03-04 15:08:44'),
+(50, 'Ronan123', '', NULL, NULL, NULL, 'grfurniture@yahoo.com', NULL, 1, 1, '2020-03-18 01:45:26', '2020-03-06 07:41:06'),
+(51, 'Super Dangerous', '', NULL, NULL, NULL, 'jayakarta@mataram.wasantara.net.id', NULL, 1, 1, '2020-03-18 01:45:26', '2020-03-06 07:44:01'),
+(52, 'Super Dangerous', '', NULL, NULL, NULL, 'ca-tech@dps.centrin.net.id', NULL, 1, 1, '2020-03-18 01:45:26', '2020-03-06 07:44:16'),
+(64, 'Giang Văn', 'Kiểm tra tính năng đăng ký tài khoản', NULL, NULL, NULL, NULL, NULL, 1, 1, '2020-03-20 00:08:25', '2020-03-20 00:08:25'),
+(65, 'Giang Văn', 'Kiểm tra tính năng đăng ký tài khoản', NULL, NULL, NULL, NULL, NULL, 1, 1, '2020-03-20 00:08:46', '2020-03-20 00:08:46');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,14 @@ CREATE TABLE `account_relationship` (
 INSERT INTO `account_relationship` (`id`, `sender_account_id`, `receiver_account_id`, `relationship_type`, `updated_at`, `created_at`) VALUES
 (1, 1, 3, 1, '2020-01-30 15:58:22', '2020-01-30 15:58:22'),
 (2, 1, 7, -1, '2020-01-30 15:58:22', '2020-01-30 15:58:22'),
-(3, 1, 6, 1, '2020-01-30 15:58:22', '2020-01-30 15:58:22');
+(3, 1, 6, 1, '2020-01-30 15:58:22', '2020-01-30 15:58:22'),
+(4, 44, 3, 1, '2020-03-20 03:29:50', '2020-03-18 10:57:31'),
+(5, 45, 3, 2, '2020-03-18 10:57:31', '2020-03-18 10:57:31'),
+(6, 46, 3, 2, '2020-03-18 10:57:31', '2020-03-18 10:57:31'),
+(7, 47, 3, 2, '2020-03-18 10:57:31', '2020-03-18 10:57:31'),
+(9, 51, 3, 2, '2020-03-20 03:00:05', '2020-03-20 03:00:05'),
+(10, 3, 51, 2, '2020-03-20 03:00:53', '2020-03-20 03:00:53'),
+(12, 3, 6, 2, '2020-03-20 03:34:03', '2020-03-20 03:34:03');
 
 -- --------------------------------------------------------
 
@@ -112,41 +120,22 @@ CREATE TABLE `account_setting` (
 INSERT INTO `account_setting` (`id`, `anonymous`, `birthyear_privacy`, `birthmonth_privacy`, `email_privacy`, `phone_privacy`) VALUES
 (1, 0, 1, 1, 1, 1),
 (2, 0, 1, 1, 1, 1),
-(3, 0, 1, 1, 1, 1),
-(4, 0, 1, 1, 1, 1),
-(5, 0, 1, 1, 1, 1),
+(3, 1, 2, 2, 1, -1),
 (6, 0, 1, 1, 1, 1),
 (7, 0, 1, 1, 1, 1),
-(8, 0, 1, 1, 1, 1),
-(9, 0, 1, 1, 1, 1),
-(10, 0, 1, 1, 1, 1),
-(11, 0, 1, 1, 1, 1),
-(12, 0, 1, 1, 1, 1),
-(13, 0, 1, 1, 1, 1),
-(14, 0, 1, 1, 1, 1),
-(15, 0, 1, 1, 1, 1),
-(16, 0, 1, 1, 1, 1),
-(17, 0, 1, 1, 1, 1),
-(18, 0, 1, 1, 1, 1),
-(19, 0, 1, 1, 1, 1),
-(20, 0, 1, 1, 1, 1),
-(21, 0, 1, 1, 1, 1),
-(22, 0, 1, 1, 1, 1),
-(23, 0, 1, 1, 1, 1),
-(24, 0, 1, 1, 1, 1),
-(25, 0, 1, 1, 1, 1),
-(26, 0, 1, 1, 1, 1),
-(27, 0, 1, 1, 1, 1),
-(28, 0, 1, 1, 1, 1),
-(29, 0, 1, 1, 1, 1),
-(30, 0, 1, 1, 1, 1),
-(31, 0, 1, 1, 1, 1),
-(32, 0, 1, 1, 1, 1),
-(33, 0, 1, 1, 1, 1),
-(34, 0, 1, 1, 1, 1),
-(35, 0, 1, 1, 1, 1),
-(36, 0, 1, 1, 1, 1),
-(37, 0, 1, 1, 1, 1);
+(42, 0, 1, 1, 1, 1),
+(43, 0, 1, 1, 1, 1),
+(44, 0, 1, 1, 1, 1),
+(45, 0, 1, 1, 1, 1),
+(46, 0, 1, 1, 1, 1),
+(47, 0, 1, 1, 1, 1),
+(48, 0, 1, 1, 1, 1),
+(49, 0, 1, 1, 1, 1),
+(50, 0, 1, 1, 1, 1),
+(51, 0, 1, 1, 1, 1),
+(52, 0, 1, 1, 1, 1),
+(64, 0, 1, 1, 1, 1),
+(65, 1, 2, 2, 1, -1);
 
 --
 -- Indexes for dumped tables
@@ -156,8 +145,7 @@ INSERT INTO `account_setting` (`id`, `anonymous`, `birthyear_privacy`, `birthmon
 -- Indexes for table `account`
 --
 ALTER TABLE `account`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `account_setting_id` (`account_setting_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `account_relationship`
@@ -182,29 +170,17 @@ ALTER TABLE `account_setting`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `account_relationship`
 --
 ALTER TABLE `account_relationship`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `account_setting`
---
-ALTER TABLE `account_setting`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `account`
---
-ALTER TABLE `account`
-  ADD CONSTRAINT `account_ibfk_6` FOREIGN KEY (`account_setting_id`) REFERENCES `account_setting` (`id`);
 
 --
 -- Constraints for table `account_relationship`
@@ -212,6 +188,12 @@ ALTER TABLE `account`
 ALTER TABLE `account_relationship`
   ADD CONSTRAINT `account_relationship_ibfk_2` FOREIGN KEY (`sender_account_id`) REFERENCES `account` (`id`),
   ADD CONSTRAINT `account_relationship_ibfk_3` FOREIGN KEY (`receiver_account_id`) REFERENCES `account` (`id`);
+
+--
+-- Constraints for table `account_setting`
+--
+ALTER TABLE `account_setting`
+  ADD CONSTRAINT `owner` FOREIGN KEY (`id`) REFERENCES `account` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
